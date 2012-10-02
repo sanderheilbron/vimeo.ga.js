@@ -10,7 +10,6 @@ All player events are only tracked once. Restarting the video will not reset the
 	* **Started video**: when the video starts playing.
 	* **Paused video**: when the video is paused.
 	* **Completed video**: when the video reaches 100% completion.
-	* **Skipped video**: when the video is skipped forward or backward.
 * Label: URL of embedded video on Vimeo.
 
 #####Example
@@ -18,7 +17,6 @@ All player events are only tracked once. Restarting the video will not reset the
 _gaq.push(['_trackEvent', 'Vimeo', 'Started video', 'http://player.vimeo.com/video/22439234', undefined, true]);
 _gaq.push(['_trackEvent', 'Vimeo', 'Paused video', 'http://player.vimeo.com/video/22439234', undefined, true]);
 _gaq.push(['_trackEvent', 'Vimeo', 'Completed video', 'http://player.vimeo.com/video/22439234', undefined, true]);
-_gaq.push(['_trackEvent', 'Vimeo', 'Skipped video forward or backward', 'http://player.vimeo.com/video/22439234', undefined, true]);
 ```
 ### Progress event trackers
 
@@ -34,6 +32,16 @@ _gaq.push(['_trackEvent', 'Vimeo', 'Skipped video forward or backward', 'http://
 _gaq.push(['_trackEvent', 'Vimeo', 'Played video: 25%', 'http://player.vimeo.com/video/22439234', undefined, true]);
 _gaq.push(['_trackEvent', 'Vimeo', 'Played video: 50%', 'http://player.vimeo.com/video/22439234', undefined, true]);
 _gaq.push(['_trackEvent', 'Vimeo', 'Played video: 75%', 'http://player.vimeo.com/video/22439234', undefined, true]);
+```
+### Seek event tracker
+* Category: Vimeo
+* Action:
+	* **Skipped video**: when the video is skipped forward or backward.
+* Label: URL of embedded video on Vimeo.
+
+#####Example
+```js
+_gaq.push(['_trackEvent', 'Vimeo', 'Skipped video forward or backward', 'http://player.vimeo.com/video/22439234', undefined, true]);
 ```
 
 ### Bounce rate
@@ -55,6 +63,7 @@ Include the scripts in the body section of the HTML document, just before the `<
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js'></script>
 <script src="path/to/vimeo.ga.min.js"></script>
 ```
+The **data-progress** and **data-seek** attributes enable tracking of progress and skip events. 
 
 The iframe embeds a Vimeo video player and allows Vimeo to serve an HTML5 player rather than a Flash player for mobile devices that do not support Flash.
 
@@ -62,7 +71,7 @@ The iframe embeds a Vimeo video player and allows Vimeo to serve an HTML5 player
 Demo will be available soon.
 
 ## Requirements
-* jQuery 1.4.3
+* jQuery 1.4.3 or higher
 * Google Analytics Tracking Code (asynchronous)
 * The end user must be using a browser that supports the HTML5 postMessage feature. Most modern browsers support postMessage, though Internet Explorer 7 does not support it.
 
