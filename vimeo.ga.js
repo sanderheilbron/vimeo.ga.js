@@ -19,6 +19,7 @@ $(function () {
 
     // Handle messages received from the player
     function onMessageReceived(e) {
+        if (e.origin !== "http://player.vimeo.com") return;
         var data = JSON.parse(e.data);
 
         switch (data.event) {
