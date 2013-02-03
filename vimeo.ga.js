@@ -48,10 +48,7 @@ $(function() {
             break;
 
         case 'pause':
-            if (timePercentComplete < 100 && !videoPaused) {
-                _gaq.push(['_trackEvent', 'Vimeo', 'Paused video', url, undefined, true]);
-                videoPaused = true; // Avoid subsequent pause trackings
-            }
+        		onPause();
             break;
 
         case 'finish':
@@ -90,11 +87,21 @@ $(function() {
         videoSeeking = false;
         videoCompleted = false;
     }
+    
+    function onPause() {
+    		if (timePercentComplete < 99 && !videoPaused) {
+    			_gaq.push(['_trackEvent', 'Vimeo', 'Paused video', url, undefined, true]);
+    			videoPaused = true; // Avoid subsequent pause trackings
+    			}
+        }
 
     // Tracking video progress 
     function onPlayProgress(data) {
         timePercentComplete = Math.round((data.percent) * 100); // Round to a whole number
         
+        if (!trackProgress) {
+        	return;
+        }
         
         var progress;
         
