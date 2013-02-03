@@ -1,6 +1,6 @@
 /*!
- * vimeo.ga.js | v0.1
- * Copyright (c) 2012 Sander Heilbron (http://sanderheilbron.nl)
+ * vimeo.ga.js | v0.2
+ * Copyright (c) 2012 - 2013 Sander Heilbron (http://sanderheilbron.nl)
  * MIT licensed
  */
  
