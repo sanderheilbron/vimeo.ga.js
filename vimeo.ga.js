@@ -89,11 +89,11 @@ $(function() {
     }
     
     function onPause() {
-    		if (timePercentComplete < 99 && !videoPaused) {
-    			_gaq.push(['_trackEvent', 'Vimeo', 'Paused video', url, undefined, true]);
-    			videoPaused = true; // Avoid subsequent pause trackings
-    			}
-        }
+     if (timePercentComplete < 99 && !videoPaused) {
+      _gaq.push(['_trackEvent', 'Vimeo', 'Paused video', url, undefined, true]);
+      videoPaused = true; // Avoid subsequent pause trackings
+      }
+     }
 
     // Tracking video progress 
     function onPlayProgress(data) {
