@@ -19,7 +19,9 @@ $(function() {
 
     // Handle messages received from the player
     function onMessageReceived(e) {
-        if (e.origin !== "http://player.vimeo.com") return;
+        if (e.origin !== "http://player.vimeo.com" || typeof _gaq === 'undefined') { 
+        	return;
+        }
         var data = JSON.parse(e.data);
 
         switch (data.event) {
