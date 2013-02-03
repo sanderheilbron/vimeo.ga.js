@@ -19,8 +19,8 @@ $(function() {
 
     // Handle messages received from the player
     function onMessageReceived(e) {
-        if (e.origin !== "http://player.vimeo.com" || typeof _gaq === 'undefined') { 
-        	return;
+        if (e.origin !== "http://player.vimeo.com" || typeof _gaq === 'undefined') {
+         return;
         }
         var data = JSON.parse(e.data);
 
@@ -48,7 +48,7 @@ $(function() {
             break;
 
         case 'pause':
-        		onPause();
+            onPause();
             break;
 
         case 'finish':
@@ -100,7 +100,7 @@ $(function() {
         timePercentComplete = Math.round((data.percent) * 100); // Round to a whole number
         
         if (!trackProgress) {
-        	return;
+         return;
         }
         
         var progress;
