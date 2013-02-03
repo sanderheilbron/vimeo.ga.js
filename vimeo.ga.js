@@ -3,8 +3,8 @@
  * Copyright (c) 2012 Sander Heilbron (http://sanderheilbron.nl)
  * MIT licensed
  */
-
-$(function () {
+ 
+$(function() {
     var f = $('iframe'),
         url = f.attr('src').split('?')[0],
         trackProgress = f.data('progress'), // Data attribute to enable progress tracking
@@ -40,8 +40,7 @@ $(function () {
 
         case 'play':
             if (!videoPlayed) {
-                _gaq.push(['_trackEvent', 'Vimeo', 'Started video', url, undefined, true]);
-                videoPaused = false;
+                _gaq.push(['_trackEvent', 'Vimeo', 'Started video', url, undefined, true]);             
                 videoPlayed = true; //  Avoid subsequent play trackings
             }
             break;
@@ -81,37 +80,38 @@ $(function () {
         post('addEventListener', 'pause');
         post('addEventListener', 'finish');
         post('addEventListener', 'playProgress');
-        progress25 = progress50 = progress75 = false;
+        progress25 = false;
+        progress50 = false;
+        progress75 = false;
         videoPlayed = false;
+        videoPaused = false;
         videoSeeking = false;
         videoCompleted = false;
     }
 
     // Tracking video progress 
     function onPlayProgress(data) {
-        timePercentComplete = (data.percent) * 100;
-        timePercentComplete = Math.round(timePercentComplete); // Round to a whole number
-        var progressTracked;
-
+        timePercentComplete = Math.round((data.percent) * 100); // Round to a whole number
+        
+        
+        var progress;
+        
         if (timePercentComplete > 24 && !progress25) {
             progress = 'Played video: 25%';
             progress25 = true;
-            progressTracked = true;
         }
 
         if (timePercentComplete > 49 && !progress50) {
             progress = 'Played video: 50%';
             progress50 = true;
-            progressTracked = true;
         }
 
         if (timePercentComplete > 74 && !progress75) {
             progress = 'Played video: 75%';
             progress75 = true;
-            progressTracked = true;
         }
-
-        if (progressTracked && trackProgress) {
+        
+        if (progress) {
             _gaq.push(['_trackEvent', 'Vimeo', progress, url, undefined, true]);
         }
     }
