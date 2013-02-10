@@ -9,7 +9,19 @@
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/prettify.css">
-    
+	  <script type="text/javascript">
+	
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-38399002-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	
+	  </script>
   </head>
   <body onload="prettyPrint()">
       <div class="container">
@@ -19,7 +31,7 @@
         <h1 class="site-title">vimeo.ga.js</h1>
         <h2 class="site-tagline">Tracking Vimeo Player Events with Google Analytics.</h1>
 
-        <a class="btn" href="https://github.com/sanderheilbron/google-analytics-vimeo-video-tracking">View on GitHub</a>
+        <a class="btn" href="https://github.com/sanderheilbron/vimeo.ga.js">View on GitHub</a>
       </div><!-- /.site-header -->
 
       <div class="site-main" role="main">
@@ -112,7 +124,7 @@ _gaq.push(['_trackEvent', 'Vimeo', 'Skipped video forward or backward', 'http://
 				<p>The event trackers do not impact bounce rate of the page which embeds the video. The value of the opt_noninteraction parameter is set to <code>true</code>.</p>
 
         <h2>Issues</h2>
-        <p>Have a bug? Please create an <a href="https://github.com/sanderheilbron/google-analytics-vimeo-video-tracking/issues">issue</a> on GitHub!</p>
+        <p>Have a bug? Please create an <a href="https://github.com/sanderheilbron/vimeo.ga.js/issues">issue</a> on GitHub!</p>
 
 				<h2>Copyright</h2>
 				<p>&copy; 2013 Sander Heilbron, <a href="http://sanderheilbron.nl">http://sanderheilbron.nl</a>.</p>
@@ -126,6 +138,6 @@ _gaq.push(['_trackEvent', 'Vimeo', 'Skipped video forward or backward', 'http://
     </div><!-- /.container -->
     <script src="js/prettify.js" /></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js'></script>
-    <script src="js/vimeo-ga-notification.js"></script>
+    <script src="js/vimeo.ga.js"></script>
   </body>
 </html>

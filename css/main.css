@@ -1,0 +1,229 @@
+/**
+ * vimeo.ga.js
+ */
+
+/* ==========================================================================
+   Base styles
+   ========================================================================== */
+
+html {
+  color: #222;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+::-moz-selection {
+  background: #b3d4fd;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+a {
+  color: #c02d2d;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+  text-decoration: underline;
+}
+
+img {
+  vertical-align: middle;
+}
+
+h2,
+h3,
+h4 {
+  margin-top: 2em;
+  line-height: 1.2;
+}
+
+p {
+  margin: 1.5em 0;
+}
+
+/**
+ * Code blocks
+ */
+
+code,
+pre {
+  overflow: auto;
+  padding: 0.15em 0.5em;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  margin: 1.5em 0;
+  background: #f2f2f2;
+  white-space: pre;
+  word-wrap: normal;
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-size: 0.8em;
+}
+
+pre code {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Site
+   ========================================================================== */
+
+.container {
+  max-width: 700px;
+  padding: 0 1.25em;
+  margin: 0 auto;
+}
+
+.site-header {
+  padding: 1em 2.5em 2.5em;
+  border: 1px solid #ccc;
+  margin: 2.5em -1.25em;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/*
+.site-title {
+  margin: 1em 0;
+  font-size: 1.5em;
+  font-weight: normal;
+  line-height: 1.4;
+}
+*/
+
+.site-title {
+  margin: 0 0 0.4em 0;
+  font-size: 3em;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.site-tagline {
+  margin: 0 0 1em;
+  font-size: 1.5em;
+  font-weight: normal;
+  line-height: 1.4;
+}
+
+.site-main img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+}
+
+.video-status {
+	text-align: center;
+	font-size: 1em;
+	padding: 0.6em 0.5em;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  margin: 1.5em 0;
+  background: #f2f2f2;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	
+}
+
+.site-footer {
+  border-top: 1px solid #ccc;
+  margin-top: 3em;
+}
+
+.site-footer p {
+  color: #777;
+  font-size: 0.875em;
+}
+
+
+/* ==========================================================================
+   Buttons (based on github.com/necolas/suit-button)
+   ========================================================================== */
+
+.btn {
+  position: relative;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  margin: 0;
+  background: #b94849;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+  font-weight: 500;
+  text-shadow: 0px -1px 0px rgba(0,0,0,0.35);
+  white-space: nowrap;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+  background: #b94849;
+  text-decoration: none;
+}
+
+.btn:active {
+  background: #b94849;
+  box-shadow: inset 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   Responsive video
+   @see http://www.jonsuh.com/blog/responsive-youtube-vimeo-embed-and-html5-video-with-css/
+   ========================================================================== */
+
+.js-video {
+  height: 0;
+  padding-top: 25px;
+  padding-bottom: 67.5%;
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+}
+ 
+.js-video.widescreen {
+  padding-bottom: 57.25%;
+}
+ 
+.js-video.vimeo {
+  padding-top: 0;
+}
+
+.js-video embed, .js-video iframe, .js-video object, .js-video video {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+/* ==========================================================================
+   Media Queries for smaller viewports
+   ========================================================================== */
+
+@media (max-width: 720px) {
+  .site-header {
+    padding: 0;
+    border: 0;
+    
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
+}
