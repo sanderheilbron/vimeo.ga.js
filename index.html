@@ -9,19 +9,18 @@
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/prettify.css">
-	  <script type="text/javascript">
-	
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-38399002-1']);
-	  _gaq.push(['_trackPageview']);
-	
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-	
-	  </script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38399002-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        .src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
   </head>
   <body onload="prettyPrint()">
       <div class="container">
@@ -35,99 +34,100 @@
       </div><!-- /.site-header -->
 
       <div class="site-main" role="main">
-      	<h2>Demo</h2>
-      	<div class="js-video vimeo widescreen">
-	      	<iframe src="http://player.vimeo.com/video/22439234?api=1" width="640" height="390" frameborder="0" data-progress="true" data-seek="true" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-	      </div>
+        <h2>Demo</h2>
+        <div class="js-video vimeo widescreen">
+        <iframe src="http://player.vimeo.com/video/22439234?api=1" width="640" height="390" frameborder="0" data-progress="true" data-seek="true" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+      </div>
 
+<<<<<<< HEAD
       	<p class="video-status"></p>
+=======
+      <p class="video-status">...</p>
+>>>>>>> Trimmed spaces.
 
-        <h2>Usage</h2>
-        <p>Include the scripts in the body section of the HTML document, just before the <code>&lt;/body&gt;</code> tag. You’ll need to be running on a web server instead of opening the file directly in your browser. Flash and JS security restrictions will prevent the API from working when run locally.</p>
+      <h2>Usage</h2>
+      <p>Include the scripts in the body section of the HTML document, just before the <code>&lt;/body&gt;</code> tag. You’ll need to be running on a web server instead of opening the file directly in your browser. Flash and JS security restrictions will prevent the API from working when run locally.</p>
 
-        <h3>Basic</h3>
-        <pre class="prettyprint">&lt;iframe src=&quot;http://player.vimeo.com/video/22439234?api=1&quot; width=&quot;640&quot; height=&quot;390&quot; frameborder=&quot;0&quot; webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;
+      <h3>Basic</h3>
+      <pre class="prettyprint">&lt;iframe src=&quot;http://player.vimeo.com/video/22439234?api=1&quot; width=&quot;640&quot; height=&quot;390&quot; frameborder=&quot;0&quot; webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;
 &lt;script src='https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js'&gt;&lt;/script&gt;
 &lt;script src=&quot;path/to/vimeo.ga.min.js&quot;&gt;&lt;/script&gt;</pre>
 
-				<h3>With some options</h3>
-				<pre class="prettyprint">&lt;iframe src=&quot;http://player.vimeo.com/video/22439234?api=1&quot; width=&quot;640&quot; height=&quot;390&quot; frameborder=&quot;0&quot; data-progress=&quot;true&quot; data-seek=&quot;true&quot; webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;
+      <h3>With some options</h3>
+      <pre class="prettyprint">&lt;iframe src=&quot;http://player.vimeo.com/video/22439234?api=1&quot; width=&quot;640&quot; height=&quot;390&quot; frameborder=&quot;0&quot; data-progress=&quot;true&quot; data-seek=&quot;true&quot; webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;
 &lt;script src='https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js'&gt;&lt;/script&gt;
 &lt;script src=&quot;path/to/vimeo.ga.min.js&quot;&gt;&lt;/script&gt;</pre>
 
-				<p>The <strong>data-progress</strong> and <strong>data-seek</strong> attributes enable tracking of progress and skip events.</p>
-				<p>The iframe embeds a Vimeo video player and allows Vimeo to serve an HTML5 player rather than a Flash player for mobile devices that do not support Flash.</p>
+      <p>The <strong>data-progress</strong> and <strong>data-seek</strong> attributes enable tracking of progress and skip events.</p>
+      <p>The iframe embeds a Vimeo video player and allows Vimeo to serve an HTML5 player rather than a Flash player for mobile devices that do not support Flash.</p>
 
-				<h2>Requirements</h2>
-				<ul>
-					<li>jQuery 1.4.3 or higher</li>
-					<li>Google Analytics Tracking Code (asynchronous)</li>
-					<li>The end user must be using a browser that supports the HTML5 postMessage feature. Most modern browsers support postMessage, though Internet Explorer 7 does not support it.</li>
-				</ul>
+      <h2>Requirements</h2>
+      <ul>
+        <li>jQuery 1.4.3 or higher</li>
+        <li>Google Analytics Tracking Code (asynchronous)</li>
+        <li>The end user must be using a browser that supports the HTML5 postMessage feature. Most modern browsers support postMessage, though Internet Explorer 7 does not support it.</li>
+      </ul>
 
-				<h2>Browser Support</h2>
-				<p>Tested in Chrome (21), Firefox (15), Safari (5,6), IE (8,9). Also tested on iOS.</p>
+      <h2>Browser Support</h2>
+      <p>Tested in Chrome (21), Firefox (15), Safari (5,6), IE (8,9). Also tested on iOS.</p>
 
-				<h2>Event Tracking</h2>
-				<p>All player events are only tracked once. Restarting the video will not reset the event trackers.</p>
-				<h3>Default event trackers</h3>
-				<ul>
-					<li>Category: Vimeo</li>
-					<li>Action:</li>
-						<ul>
-							<li><strong>Started video</strong>: when the video starts playing.</li>
-							<li><strong>Paused video</strong>: when the video is paused.</li>
-							<li><strong>Completed video</strong>: when the video reaches 100% completion.</li>
-						</ul>
-					<li>Label: URL of embedded video on Vimeo.</li>
-				</ul>
+      <h2>Event Tracking</h2>
+      <p>All player events are only tracked once. Restarting the video will not reset the event trackers.</p>
+      <h3>Default event trackers</h3>
+      <ul>
+        <li>Category: Vimeo</li>
+        <li>Action:</li>
+        <ul>
+          <li><strong>Started video</strong>: when the video starts playing.</li>
+          <li><strong>Paused video</strong>: when the video is paused.</li>
+          <li><strong>Completed video</strong>: when the video reaches 100% completion.</li>
+          </ul>
+          <li>Label: URL of embedded video on Vimeo.</li>
+        </ul>
 
-				<strong>Example</strong>
+        <strong>Example</strong>
 
-				<pre class="prettyprint">
-_gaq.push(['_trackEvent', 'Vimeo', 'Started video', 'http://player.vimeo.com/video/22439234', undefined, true]);
+        <pre class="prettyprint">_gaq.push(['_trackEvent', 'Vimeo', 'Started video', 'http://player.vimeo.com/video/22439234', undefined, true]);
 _gaq.push(['_trackEvent', 'Vimeo', 'Paused video', 'http://player.vimeo.com/video/22439234', undefined, true]);
 _gaq.push(['_trackEvent', 'Vimeo', 'Completed video', 'http://player.vimeo.com/video/22439234', undefined, true]);</pre>
 
-				<h3>Progress event trackers</h3>
-				<ul>
-					<li>Category: Vimeo</li>
-					<li>Action:</li>
-						<ul>
-							<li><strong>25% Progress</strong>: when the video reaches 25% of the total video time.</li>
-							<li><strong>50% Progress</strong>: when the video reaches 50% of the total video time.</li>
-							<li><strong>75% Progress</strong>: when the video reaches 75% of the total video time.</li>
-						</ul>
-					<li>Label: URL of embedded video on Vimeo.</li>
-				</ul>
+      <h3>Progress event trackers</h3>
+      <ul>
+        <li>Category: Vimeo</li>
+        <li>Action:</li>
+        <ul>
+          <li><strong>25% Progress</strong>: when the video reaches 25% of the total video time.</li>
+          <li><strong>50% Progress</strong>: when the video reaches 50% of the total video time.</li>
+          <li><strong>75% Progress</strong>: when the video reaches 75% of the total video time.</li>
+          </ul>
+          <li>Label: URL of embedded video on Vimeo.</li>
+        </ul>
 
-				<strong>Example</strong>
-				<pre class="prettyprint">
-_gaq.push(['_trackEvent', 'Vimeo', 'Played video: 25%', 'http://player.vimeo.com/video/22439234', undefined, true]);
+        <strong>Example</strong>
+        <pre class="prettyprint">_gaq.push(['_trackEvent', 'Vimeo', 'Played video: 25%', 'http://player.vimeo.com/video/22439234', undefined, true]);
 _gaq.push(['_trackEvent', 'Vimeo', 'Played video: 50%', 'http://player.vimeo.com/video/22439234', undefined, true]);
 _gaq.push(['_trackEvent', 'Vimeo', 'Played video: 75%', 'http://player.vimeo.com/video/22439234', undefined, true]);</pre>
 
-				<h3>Seek event tracker</h3>
-				<ul>
-					<li>Category: Vimeo</li>
-					<li>Action:</li>
-						<ul>
-							<li><strong>Skipped video</strong>: when the video is skipped forward or backward.</li>
-						</ul>
-					<li>Label: URL of embedded video on Vimeo.</li>
-				</ul>
-				<strong>Example</strong>
-				<pre class="prettyprint">
-_gaq.push(['_trackEvent', 'Vimeo', 'Skipped video forward or backward', 'http://player.vimeo.com/video/22439234', undefined, true]);</pre>
+      <h3>Seek event tracker</h3>
+      <ul>
+        <li>Category: Vimeo</li>
+        <li>Action:</li>
+        <ul>
+          <li><strong>Skipped video</strong>: when the video is skipped forward or backward.</li>
+        </ul>
+        <li>Label: URL of embedded video on Vimeo.</li>
+      </ul>
+      <strong>Example</strong>
+      <pre class="prettyprint">_gaq.push(['_trackEvent', 'Vimeo', 'Skipped video forward or backward', 'http://player.vimeo.com/video/22439234', undefined, true]);</pre>
 
-				<h2>Bounce rate</h2>
-				<p>The event trackers do not impact bounce rate of the page which embeds the video. The value of the opt_noninteraction parameter is set to <code>true</code>.</p>
+      <h2>Bounce rate</h2>
+      <p>The event trackers do not impact bounce rate of the page which embeds the video. The value of the opt_noninteraction parameter is set to <code>true</code>.</p>
 
-        <h2>Issues</h2>
-        <p>Have a bug? Please create an <a href="https://github.com/sanderheilbron/vimeo.ga.js/issues">issue</a> on GitHub!</p>
+      <h2>Issues</h2>
+      <p>Have a bug? Please create an <a href="https://github.com/sanderheilbron/vimeo.ga.js/issues">issue</a> on GitHub!</p>
 
-				<h2>Copyright</h2>
-				<p>&copy; 2013 Sander Heilbron, <a href="http://sanderheilbron.nl">http://sanderheilbron.nl</a>.</p>
+      <h2>Copyright</h2>
+      <p>&copy; 2013 Sander Heilbron, <a href="http://sanderheilbron.nl">http://sanderheilbron.nl</a>.</p>
 
       </div><!-- /.site-main -->
 
