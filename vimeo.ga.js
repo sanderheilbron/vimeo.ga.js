@@ -3,12 +3,18 @@
  * Copyright (c) 2012 - 2013 Sander Heilbron (http://sanderheilbron.nl)
  * MIT licensed
  */
- 
+
 $(function() {
     var f = $('iframe'),
-        url = f.attr('src').split('?')[0],
+        url = f.attr('src').split('?')[0], // source URL
+        urlRE = new RegExp(/^http:/), // source URL regular expression
         trackProgress = f.data('progress'), // Data attribute to enable progress tracking
         trackSeeking = f.data('seek'); // Data attribute to enable seek tracking
+
+    // check if
+    if (urlRE.test(url) == false) {
+        url = 'http:' + url
+    }
 
     // Listen for messages from the player
     if (window.addEventListener) {
@@ -87,7 +93,7 @@ $(function() {
         videoSeeking = false;
         videoCompleted = false;
     }
-    
+
     function onPause() {
      if (timePercentComplete < 99 && !videoPaused) {
       _gaq.push(['_trackEvent', 'Vimeo', 'Paused video', url, undefined, true]);
@@ -98,13 +104,13 @@ $(function() {
     // Tracking video progress 
     function onPlayProgress(data) {
         timePercentComplete = Math.round((data.percent) * 100); // Round to a whole number
-        
+    
         if (!trackProgress) {
          return;
         }
-        
+    
         var progress;
-        
+    
         if (timePercentComplete > 24 && !progress25) {
             progress = 'Played video: 25%';
             progress25 = true;
@@ -119,7 +125,7 @@ $(function() {
             progress = 'Played video: 75%';
             progress75 = true;
         }
-        
+    
         if (progress) {
             _gaq.push(['_trackEvent', 'Vimeo', progress, url, undefined, true]);
         }
