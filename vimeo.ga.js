@@ -7,13 +7,13 @@
 $(function() {
     var f = $('iframe'),
         url = f.attr('src').split('?')[0], // source URL
-        urlRE = new RegExp(/^http:/), // source URL regular expression
+        protocol = document.URL.split(':')[0], // domain protocol (http or https)
         trackProgress = f.data('progress'), // Data attribute to enable progress tracking
         trackSeeking = f.data('seek'); // Data attribute to enable seek tracking
 
-    // check if
-    if (urlRE.test(url) == false) {
-        url = 'http:' + url
+    // match protocol with what is in document.URL
+    if (url.match(/^http/) === null) {
+        url = protocol + ':' + url;
     }
 
     // Listen for messages from the player
