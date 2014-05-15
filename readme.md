@@ -6,17 +6,17 @@ Include the scripts in the body section of the HTML document, just before the `<
 
 ### Basic
 ```html
-<iframe src="//player.vimeo.com/video/22439234?api=1" width="640" height="390" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js'></script>
-<script src="path/to/vimeo.ga.min.js"></script>
-```	
-### With some options
-```html
-<iframe src="//player.vimeo.com/video/22439234?api=1" width="640" height="390" frameborder="0" data-progress="true" data-seek="true" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<iframe src="//player.vimeo.com/video/22439234?api=1" id="vimeo-player" width="640" height="390" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js'></script>
 <script src="path/to/vimeo.ga.min.js"></script>
 ```
-The **data-progress** and **data-seek** attributes enable tracking of progress and skip events. 
+### With some options
+```html
+<iframe src="//player.vimeo.com/video/22439234?api=1" id="vimeo-player" width="640" height="390" frameborder="0" data-progress="true" data-seek="true" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js'></script>
+<script src="path/to/vimeo.ga.min.js"></script>
+```
+The **data-progress** and **data-seek** attributes enable tracking of progress and skip events.
 
 The iframe embeds a Vimeo video player and allows Vimeo to serve an HTML5 player rather than a Flash player for mobile devices that do not support Flash.
 
@@ -78,6 +78,11 @@ The event trackers do not impact bounce rate of the page which embeds the video.
 Have a bug? Please create an issue here on GitHub!
 
 ## Changelog
+### 0.3 (May 15, 2014):
+* Checks if Vimeo iframe is present to prevent JS error on pages without iframe.
+* Fixed a bug when the page contains other iframes.
+* Support for new Vimeo iframe usage guidelines, the script supports HTTP and HTTPS protocol.
+
 ### 0.2 (February 3, 2013):
  * Code cleanup.
  * Fixed a bug in pause event tracking.
@@ -89,7 +94,7 @@ Have a bug? Please create an issue here on GitHub!
 ## License
 Licensed under the MIT license.
 
-Copyright (c) 2014 Sander Heilbron, http://www.sanderheilbron.nl
+Copyright (c) 2014 [Sander Heilbron](http://www.sanderheilbron.nl)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,17 +1,22 @@
 /*!
- * vimeo.ga.js | v0.2
- * Copyright (c) 2012 - 2013 Sander Heilbron (http://sanderheilbron.nl)
+ * vimeo.ga.js | v0.3
+ * Copyright (c) 2014 Sander Heilbron (http://www.sanderheilbron.nl)
  * MIT licensed
  */
 
 $(function() {
-    var f = $('iframe'),
+    // Check for iframe
+    if (!$('#vimeo-player').length) {
+      return;
+    }
+
+    var f = $('#vimeo-player'),
         url = f.attr('src').split('?')[0], // source URL
         protocol = document.URL.split(':')[0], // domain protocol (http or https)
         trackProgress = f.data('progress'), // Data attribute to enable progress tracking
         trackSeeking = f.data('seek'); // Data attribute to enable seek tracking
 
-    // match protocol with what is in document.URL
+    // Match protocol with what is in document.URL
     if (url.match(/^http/) === null) {
         url = protocol + ':' + url;
     }
@@ -48,7 +53,7 @@ $(function() {
 
         case 'play':
             if (!videoPlayed) {
-                _gaq.push(['_trackEvent', 'Vimeo', 'Started video', url, undefined, true]);             
+                _gaq.push(['_trackEvent', 'Vimeo', 'Started video', url, undefined, true]);
                 videoPlayed = true; //  Avoid subsequent play trackings
             }
             break;
@@ -101,16 +106,16 @@ $(function() {
       }
      }
 
-    // Tracking video progress 
+    // Tracking video progress
     function onPlayProgress(data) {
         timePercentComplete = Math.round((data.percent) * 100); // Round to a whole number
-    
+
         if (!trackProgress) {
          return;
         }
-    
+
         var progress;
-    
+
         if (timePercentComplete > 24 && !progress25) {
             progress = 'Played video: 25%';
             progress25 = true;
@@ -125,7 +130,7 @@ $(function() {
             progress = 'Played video: 75%';
             progress75 = true;
         }
-    
+
         if (progress) {
             _gaq.push(['_trackEvent', 'Vimeo', progress, url, undefined, true]);
         }
