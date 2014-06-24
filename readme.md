@@ -20,27 +20,6 @@ The **data-progress** and **data-seek** attributes enable tracking of progress a
 
 The iframe embeds a Vimeo video player and allows Vimeo to serve an HTML5 player rather than a Flash player for mobile devices that do not support Flash.
 
-## Requirements
-* jQuery 1.4.3 or higher
-* Classic Google Analytics Tracking Code (asynchronous), Universal Analytics Tracking Code or Google Tag Manager container code
-* The end user must be using a browser that supports the HTML5 postMessage feature. Most modern browsers support postMessage, though Internet Explorer 7 does not support it.
-
-## Google Tag Manager
-If you'd like to integrate with Google Tag Manager, the dataLayer variable names are below.
-
-* Event Category = `{{eventCategory}}`
-* Event Action = `{{eventAction}}`
-* Event Label = `{{eventLabel}}`
-* Event Value = `{{eventValue}}`
-* Event Non-Interaction = `{{eventNonInteraction}}`
-
-Use the GTM event `Vimeo` to fire the Universal or Classic Google Analytics event tag.
-
-The GTM container tag could also be used to include the plugin inside a page containing the video. Create a custom HTML tag and trigger this tag so that this script fires on gtm.dom (`{{event}}` equals `gtm.dom`), meaning it will fire once the DOM is ready.
-
-## Browser Support
-Tested in the latest versions of Chrome, Firefox, Safari, and IE. Also tested on iOS.
-
 ## Event Tracking
 All player events are only tracked once. Restarting the video will not reset the event trackers.
 
@@ -51,7 +30,7 @@ All player events are only tracked once. Restarting the video will not reset the
   * **Paused video**: when the video is paused.
   * **Resumed video**: when the video starts playing when it was paused.
   * **Completed video**: when the video reaches 100% completion.
-	* **Skipped video**: when the video is skipped forward or backward.
+  * **Skipped video**: when the video is skipped forward or backward.
 * Label: URL of embedded video on Vimeo.
 
 ##### Example Classic Analytics
@@ -113,6 +92,29 @@ dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Play
 
 ### Bounce rate
 The event trackers do not impact bounce rate of the page which embeds the video. The value of the opt_noninteraction parameter is set to `true` or `1`.
+
+## Google Tag Manager
+If you'd like to integrate with Google Tag Manager, the dataLayer variable names are below.
+
+| Macro Name            | Data Layer Variable       | 
+| --------------------- | ------------------------- |
+| Event Category        | `{{eventCategory}}`       |
+| Event Action          | `{{eventAction}}`         |
+| Event Label           | `{{eventLabel}}`          |
+| Event Value           | `{{eventValue}}`          |
+| Event Non-Interaction | `{{eventNonInteraction}}` |
+
+Use the GTM event `Vimeo` to fire the Universal or Classic Google Analytics event tag.
+
+The GTM container tag could also be used to include the plugin inside a page containing the video. Create a custom HTML tag and trigger this tag so that this script fires on gtm.dom (`{{event}}` equals `gtm.dom`), meaning it will fire once the DOM is ready.
+
+## Browser Support
+Tested in the latest versions of Chrome, Firefox, Safari, and IE. Also tested on iOS.
+
+## Requirements
+* jQuery 1.4.3 or higher
+* Classic Google Analytics Tracking Code (asynchronous), Universal Analytics Tracking Code or Google Tag Manager container code
+* The end user must be using a browser that supports the HTML5 postMessage feature. Most modern browsers support postMessage, though Internet Explorer 7 does not support it.
 
 ## Issues
 Have a bug? Please create an [issue](https://github.com/sanderheilbron/vimeo.ga.js/issues) here on GitHub!
