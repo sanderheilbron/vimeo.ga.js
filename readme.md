@@ -125,7 +125,7 @@ Want to contribute? Great! Just fork the project, make your changes and open a [
 ## Changelog
 ### 0.4 (June 22, 2014)
 * Support for Universal Analytics and Google Tag Manager.
-* 'Resumed video' added as default event tracker.
+* 'Resumed video' added as basic event tracker.
 * Code cleanup.
 * Updated documentation.
 
