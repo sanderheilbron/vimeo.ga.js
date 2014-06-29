@@ -6,7 +6,7 @@ $(function () {
     $element.html("<p>Loading Gist...</p>");
 
     $.ajax({
-        url: "https://gist.github.com/" + id + ".json",
+        url: "https://gist.github.com/sanderheilbron/" + id + ".json",
         dataType: "jsonp",
         cache: true,
         success: function (data) {
