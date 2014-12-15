@@ -4,8 +4,6 @@
   <meta charset="utf-8">
 
   <!-- DNS Prefetch -->
-  <link rel="dns-prefetch" href="http://fonts.googleapis.com">
-  <link rel="prefetch" href="http://fonts.googleapis.com">
   <link rel="dns-prefetch" href="//www.google-analytics.com">
   <link rel="prefetch" href="//www.google-analytics.com">
 
@@ -30,21 +28,101 @@
   <meta name="twitter:title" content="vimeo.ga.js — A Google Analytics plugin for measuring Vimeo Player Events">
   <meta name="twitter:description" content="An easy-to-use solution to track Vimeo Player API events with the Event Tracking method of Google Analytics.">
 
-  <!-- Google Authorship -->
-  <link rel="author" href="https://plus.google.com/+SanderHeilbron/posts">
+  <!-- Critical CSS -->
+	<style>
+		html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}header{display:block}a{background:0 0}img{border:0}td{padding:0}*,:after,:before{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}html{font-family:'Source Sans Pro Regular','Helvetica Neue',helvetica,arial,sans-serif;font-size:100%;line-height:1.5;font-weight:400;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}body{background-color:#fff;color:#555}.container{margin:0 auto;max-width:48rem;width:90%}header{padding:3em 0 2em;margin-bottom:3rem;background-color:#28affa}header img{width:130px}h1{font-size:260%;font-weight:300;text-align:center;margin:.18em 0 0;color:#fff;font-family:'Source Sans Pro Light','Helvetica Neue',helvetica,arial,sans-serif}.tagline{font-size:150%;font-weight:300;text-align:center;margin:0 0 1em;color:#fff;line-height:1.3;padding-top:0;font-family:'Source Sans Pro Light','Helvetica Neue',helvetica,arial,sans-serif}a{color:#3f4854}.intro{text-align:center;font-size:100%;color:#707d8d}.intro:last-of-type{margin:0 0 1em}img{display:block;height:auto;margin:0 auto}.demo{padding-bottom:3rem}ul{display:inline-block;text-align:left}.downloads{padding:0 0 1rem;list-style-type:none;text-align:center}.downloads ul{padding:0}.downloads ul li{margin-bottom:1em;list-style-type:none}.downloads a{display:inline-block}.downloads a:link{opacity:1}.button{-moz-appearance:none;-webkit-appearance:none;appearance:none;background-color:#fff;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;border:2px solid #28affa;color:#28affa;cursor:pointer;display:block;text-align:center;padding:.4rem 0 .2rem;white-space:nowrap;width:250px;text-decoration:none}a.button span{font-size:1.1rem;line-height:2.4rem;color:#28affa;vertical-align:super;font-style:normal;text-decoration:none}.js-video{height:0;padding-top:25px;padding-bottom:67.5%;margin-bottom:10px;position:relative;overflow:hidden}.js-video.widescreen{padding-bottom:57.25%}.js-video.vimeo{padding-top:0}.js-video iframe{top:0;left:0;width:100%;height:100%;position:absolute}.gist .line-numbers{display:none}.gist .gist-file .gist-meta{display:none!important}.downloads ul{padding-bottom:1rem}.downloads li span{display:block}.downloads span{font-size:80%;color:#707d8d}.clearfix:after,.clearfix:before{content:" ";display:table}.clearfix:after{clear:both}@media (min-width:40rem){.column{float:left;margin:0;padding-left:1rem;padding-right:1rem}.column.full{width:100%}header img{width:160px}.intro{font-size:120%}ul{display:inline-block;margin:0;text-align:left}.downloads ul li{float:left;margin:0 20px 20px 0}.downloads ul li:last-of-type{margin:0 0 20px}}@media (min-width:64rem){html{font-size:120%}.intro{font-size:120%;padding-left:3rem;padding-right:3rem}header img{width:160px}}
+	</style>
+	
+	<script>
+		/*!
+		loadCSS: load a CSS file asynchronously.
+		[c]2014 @scottjehl, Filament Group, Inc.
+		Licensed MIT
+		*/
+		function loadCSS(href, before, media){
+			"use strict";
+			// Arguments explained:
+			// `href` is the URL for your CSS file.
+			// `before` optionally defines the element we'll use as a reference for injecting our <link>
+			// By default, `before` uses the first <script> element in the page.
+			// However, since the order in which stylesheets are referenced matters, you might need a more specific location in your document.
+			// If so, pass a different reference element to the `before` argument and it'll insert before that instead
+			// note: `insertBefore` is used instead of `appendChild`, for safety re: http://www.paulirish.com/2011/surefire-dom-element-insertion/
+			var ss = window.document.createElement('link');
+			var ref = before || window.document.getElementsByTagName('script')[0];
+			var sheets = window.document.styleSheets;
+			ss.rel = 'stylesheet';
+			ss.href = href;
+			// temporarily, set media to something non-matching to ensure it'll fetch without blocking render
+			ss.media = 'only x';
+			// inject link
+			ref.parentNode.insertBefore(ss, ref);
+			// This function sets the link's media back to `all` so that the stylesheet applies once it loads
+			// It is designed to poll until document.styleSheets includes the new sheet.
+			function toggleMedia(){
+				var defined;
+				for(var i = 0; i < sheets.length; i++){
+					if(sheets[i].href && sheets[i].href.indexOf(href) > -1 ){
+						defined = true;
+					}
+				}
+				if(defined){
+					ss.media = media || 'all';
+				}
+				else {
+					setTimeout(toggleMedia);
+				}
+			}
+			toggleMedia();
+			return ss;
+		}
+    
+    loadCSS('css/stylesheet.min.c7cf1e83.css');
 
-  <!-- Critical Path CSS -->
-  <style>
-    html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}header{display:block}a{background:0 0}a:hover{outline:0}img{border:0}*,:after,:before{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}html{font-family:'Source Sans Pro',sans-serif;font-size:100%;line-height:1.5;font-weight:400;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}body{background-color:#fff;color:#555}.container{margin:0 auto;max-width:48rem;width:90%}header{padding:3em 0 2em;margin-bottom:3rem;background:#00B9EE}header img{width:130px}h1{font-size:260%;font-weight:300;text-align:center;margin:.18em 0 0;color:#fff}.tagline{font-size:150%;font-weight:300;text-align:center;margin:0 0 1em;color:#fff;line-height:1.3;padding-top:0}a{color:#3f4854}.intro{text-align:center;font-size:110%;color:#707d8d;font-weight:400}.intro:last-of-type{margin:0 0 1em}img{display:block;height:auto;margin:0 auto}.demo{padding-bottom:3rem}ul{display:inline-block;text-align:left}.downloads{padding:0 0 1rem;list-style-type:none;text-align:center}.downloads ul{padding:0}.downloads ul li{margin-bottom:1em;list-style-type:none}.downloads a{display:inline-block}.downloads a:link{opacity:1}.downloads a:hover{opacity:.9}.button{-moz-appearance:none;-webkit-appearance:none;appearance:none;background-color:#00B9EE;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;border:none;color:#fff;cursor:pointer;display:block;font-size:1rem;text-align:center;padding:.7rem 1.5rem;vertical-align:middle;white-space:nowrap;width:250px;text-decoration:none}.js-video{height:0;padding-top:25px;padding-bottom:67.5%;margin-bottom:10px;position:relative;overflow:hidden}.js-video.widescreen{padding-bottom:57.25%}.js-video.vimeo{padding-top:0}.js-video iframe{top:0;left:0;width:100%;height:100%;position:absolute}.gist .gist-file .gist-meta{display:none!important}.downloads ul{padding-bottom:1rem}.clearfix:after,.clearfix:before{content:" ";display:table}.clearfix:after{clear:both}.clearfix{*zoom:1}@media (min-width:40rem){.column{float:left;margin:0;padding-left:1rem;padding-right:1rem}.column.full{width:100%}header img{width:160px}.intro{font-size:120%}ul{display:inline-block;margin:0;text-align:left}.downloads ul li{float:left;margin:0 20px 20px 0}.downloads ul li:last-of-type{margin:0 0 20px}}@media (min-width:64rem){html{font-size:120%}.intro{font-size:120%;padding-left:3rem;padding-right:3rem}header img{width:160px}} @font-face{font-family:'Source Sans Pro';font-style:normal;font-weight:200;src:local('Source Sans Pro ExtraLight'),local('SourceSansPro-ExtraLight'),url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v7/toadOcfmlt9b38dHJxOBGC-IiwWNzQT_LXAtr-Ee9Pw.woff) format('woff')}@font-face{font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:local('Source Sans Pro Light'),local('SourceSansPro-Light'),url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v7/toadOcfmlt9b38dHJxOBGMVNtom4QlEDNJaqqqzqdSs.woff) format('woff')}@font-face{font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:local('Source Sans Pro'),local('SourceSansPro-Regular'),url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v7/ODelI1aHBYDBqgeIAH2zlNHq-FFgoDNV3GTKpHwuvtI.woff) format('woff')}
-  </style>
-
-  <!-- JS -->
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js'></script>
+  </script>
+  <noscript>
+  	<link rel="stylesheet" href="css/stylesheet.min.c7cf1e83.css">
+  </noscript>
+  
+	<script>
+		(function(){
+		    function addFont() {
+		        var style = document.createElement('style');
+		        style.rel = 'stylesheet';
+		        document.head.appendChild(style);
+		        style.textContent = localStorage.sourceSansPro;
+		    }
+		
+		    try {
+		        if (localStorage.sourceSansPro) {
+		            // The font is in localStorage, we can load it directly
+		            addFont();
+		        } else {
+		            // We have to first load the font file asynchronously
+		            var request = new XMLHttpRequest();
+		            request.open('GET', 'css/source-sans-pro.woff.css', true);
+		
+		            request.onload = function() {
+		                if (request.status >= 200 && request.status < 400) {
+		                    // We save the file in localStorage
+		                    localStorage.sourceSansPro = request.responseText;
+		
+		                    // ... and load the font
+		                    addFont();
+		                }
+		            }
+		
+		            request.send();
+		        }
+		    } catch(ex) {
+		        // maybe load the font synchronously for woff-capable browsers
+		        // to avoid blinking on every request when localStorage is not available
+		    }
+		}());
+	</script>
 
   <!-- Async JS -->
-  <script async src="js/jquery.gist.js"></script>
-  <script async src="js/vimeo.ga.js"></script>
-  <script async src="js/social.js"></script>
+  <script async src="js/social.min.js"></script>
   <script async src="js/retina.min.js"></script>
 
   <!--[if lt IE 9]>
@@ -82,10 +160,10 @@
       <div class="container">
         <ul>
           <li>
-            <a href="https://github.com/sanderheilbron/vimeo.ga.js/releases/download/0.4/vimeo.ga.min.js" class="button" title="Download">Download</a>
+            <a href="https://github.com/sanderheilbron/vimeo.ga.js/releases/download/0.4/vimeo.ga.min.js" class="button" title="Download"><span>Download</span></a>
           </li>
           <li>
-            <a href="https://github.com/sanderheilbron/vimeo.ga.js" class="button" title="View on GitHub">View on GitHub</a>
+            <a href="https://github.com/sanderheilbron/vimeo.ga.js" class="button" title="View on GitHub"><span>View on GitHub</span></a>
           </li>
         </ul>
       </div>
@@ -156,7 +234,7 @@
           <li>Action:</li>
           <ul>
             <li><strong>25% Progress</strong>: when the video reaches 25% of the total video time.</li>
-            <li><strong>50% Progress</strong>:when the video reaches 50% of the total video time.</li>
+            <li><strong>50% Progress</strong>: when the video reaches 50% of the total video time.</li>
             <li><strong>75% Progress</strong>: when the video reaches 75% of the total video time.</li>
           </ul>
           <li>Label: URL of embedded video on Vimeo.</li>
@@ -237,7 +315,7 @@
     <div class="container">
       <p class="action">Share with friends</p>
       <ul>
-        <li><a href="http://www.facebook.com/share.php?u=http://www.sanderheilbron.nl/vimeo.ga.js/" class="facebook" onclick="return fbs_click(400, 300);" target="_blank" title="Share on Facebook"><span><em>Share</em></span></a></li>
+        <li><a href="http://www.facebook.com/share.php?u=http://www.sanderheilbron.nl/vimeo.ga.js/" class="facebook" onclick="return fbs_click(400, 300)" target="_blank" title="Share on Facebook"><span><em>Share</em></span></a></li>
         <li><a href="https://twitter.com/intent/tweet?original_referer=http://www.sanderheilbron.nl/vimeo.ga.js/&text=vimeo.ga.js+—+A+Google+Analytics+plugin+for+measuring+Vimeo+Player+Events.&url=http://www.sanderheilbron.nl/vimeo.ga.js/" onclick="twt_click();return false;" class="twitter" title="Tweet on Twitter"><span><em>Tweet</em></span></a></li>
       </ul>
     </div>
@@ -246,42 +324,51 @@
   <footer>
     <div class="container">
       <div class="row clearfix">
-        <p class="column full">Code licensed under the <a href="http://opensource.org/licenses/MIT">MIT License</a> and available on <a href="https://github.com/sanderheilbron/vimeo.ga.js">GitHub</a>.</p>
+        <p>Code licensed under the <a href="http://opensource.org/licenses/MIT">MIT License</a> and available on <a href="https://github.com/sanderheilbron/vimeo.ga.js">GitHub</a>.</p>
         <p>Copyright &copy; 2014 <a href="http://www.sanderheilbron.nl">Sander Heilbron</a>.</p>
       </div>
     </div>
   </footer>
-  <script>
-    /*!
-    Modified for brevity from https://github.com/filamentgroup/loadCSS
-    loadCSS: load a CSS file asynchronously.
-    [c]2014 @scottjehl, Filament Group, Inc.
-    Licensed MIT
-    */
-    function loadCSS(href){
-      var ss = window.document.createElement('link'),
-          ref = window.document.getElementsByTagName('head')[0];
-
-      ss.rel = 'stylesheet';
-      ss.href = href;
-
-      // temporarily, set media to something non-matching to ensure it'll
-      // fetch without blocking render
-      ss.media = 'only x';
-
-      ref.parentNode.insertBefore(ss, ref);
-
-      setTimeout( function(){
-        // set media back to `all` so that the stylesheet applies once it loads
-        ss.media = 'all';
-      },0);
-    }
-    loadCSS('css/normalize.css');
-    loadCSS('css/stylesheet.css');
-  </script>
-  <noscript>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/stylesheet.css">
-  </noscript>
-</body>
+    
+  <!-- JS -->
+  <script> 
+		/*! loadJS: load a JS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. (Based on http://goo.gl/REQGQ by Paul Irish). Licensed MIT */
+		function loadJS(src, cb){
+			"use strict";
+			var ref = window.document.getElementsByTagName('script')[0];
+			var script = window.document.createElement('script');
+			script.src = src;
+			script.async = true;
+			ref.parentNode.insertBefore(script, ref);
+			if (cb && typeof(cb) === 'function') {
+				script.onload = cb;
+			}
+			return script;
+		}
+	  
+	  /*! Load jQuery and execute other scripts after jQuery is loaded */
+	  (function() {
+	    function getScript(src, success){
+	      var script = window.document.createElement('script');
+	      script.src = src;
+	      var head = window.document.getElementsByTagName('head')[0],
+	          done = false;
+	      script.onload = script.onreadystatechange = function() {
+	        if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+	          done = true;
+	          success();
+	          script.onload = script.onreadystatechange = null;
+	          head.removeChild(script);
+	        }
+	      };
+	      head.appendChild(script);
+	    }
+	        
+	    getScript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', function() {
+		    loadJS('js/vimeo.ga.min.js');
+	      loadJS('js/jquery.gist.min.js');
+	    });
+	  })();  
+  </script>  
+ </body>
 </html>
