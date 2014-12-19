@@ -14,8 +14,6 @@
   }
 
   var f = $('#vimeo-player'),
-      url = f.attr('src').split('?')[0],      // Source URL
-      protocol = document.URL.split(':')[0],  // Domain protocol (http or https)
       trackProgress = f.data('progress'),     // Data attribute to enable progress tracking
       trackSeeking = f.data('seek'),          // Data attribute to enable seek tracking
       gaTracker,
@@ -28,11 +26,6 @@
       videoSeeking = false,
       videoCompleted = false,
       timePercentComplete = 0;
-
-  // Match protocol with what is in document.URL
-  if (url.match(/^http/) === null) {
-    url = protocol + ':' + url;
-  }
 
   // Check which version of Google Analytics is used
 
@@ -61,6 +54,20 @@
     window.attachEvent('onmessage', onMessageReceived, false);
   }
 
+  function getIframeUrl() {
+    // the src of the iframe may have changed via another javascript event
+    // so get the current state
+    var theUrl = f.attr('src').split('?')[0];
+    var theProtocol = document.URL.split(':')[0];
+
+    // Match protocol with what is in document.URL
+    if (theUrl.match(/^http/) === null) {
+      theUrl = theProtocol + ':' + theUrl;
+    }
+    
+    return theUrl;
+  }
+  
   // Send event to Classic Analytics, Universal Analytics or Google Tag Manager
   function sendEvent(action) {
     switch (gaTracker) {
@@ -69,18 +76,18 @@
         'event' : 'Vimeo',
         'eventCategory' : 'Vimeo',
         'eventAction' : action,
-        'eventLabel' : url,
+        'eventLabel' : getIframeUrl(),
         'eventValue' : undefined,
         'eventNonInteraction' : true
       });
       break;
     case 'ua':
-      ga('send', 'event', 'Vimeo', action, url, undefined, {
+      ga('send', 'event', 'Vimeo', action, getIframeUrl(), undefined, {
         "nonInteraction" : 1
       });
       break;
     case 'ga':
-      _gaq.push(['_trackEvent', 'Vimeo', action, url, undefined, true]);
+      _gaq.push(['_trackEvent', 'Vimeo', action, getIframeUrl(), undefined, true]);
       break;
     }
   }
@@ -142,7 +149,7 @@
       data.value = value;
     }
 
-    f[0].contentWindow.postMessage(JSON.stringify(data), url);
+    f[0].contentWindow.postMessage(JSON.stringify(data), getIframeUrl());
   }
 
   function onReady() {
