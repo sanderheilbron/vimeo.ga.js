@@ -6,17 +6,18 @@ Include the scripts in the body section of the HTML document, just before the `<
 
 ### Basic
 ```html
-<iframe src="//player.vimeo.com/video/22439234?api=1" id="vimeo-player" width="640" height="390" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<iframe src="//player.vimeo.com/video/22439234?api=1&player_id=vimeo-player-1" id="vimeo-player-1" width="640" height="390" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<iframe src="//player.vimeo.com/video/22439234?api=1&player_id=vimeo-player-2" id="vimeo-player-2" width="640" height="390" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js'></script>
 <script src="path/to/vimeo.ga.min.js"></script>
 ```
 ### With some options
 ```html
-<iframe src="//player.vimeo.com/video/22439234?api=1" id="vimeo-player" width="640" height="390" frameborder="0" data-progress="true" data-seek="true" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<iframe src="//player.vimeo.com/video/22439234?api=1&player_id=vimeo-player-1" id="vimeo-player-1" width="640" height="390" frameborder="0" data-progress="true" data-seek="true" data-bounce="true" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js'></script>
 <script src="path/to/vimeo.ga.min.js"></script>
 ```
-The **data-progress** and **data-seek** attributes enable tracking of progress and skip events.
+The **data-progress** and **data-seek** attributes enable tracking of progress and skip events. With **data-bounce** set to true event trackers will impact bounce rate of the page which embeds the video.
 
 The iframe embeds a Vimeo video player and allows Vimeo to serve an HTML5 player rather than a Flash player for mobile devices that do not support Flash.
 
@@ -91,7 +92,7 @@ dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Play
 ```
 
 ### Bounce rate
-The event trackers do not impact bounce rate of the page which embeds the video. The value of the opt_noninteraction parameter is set to `true` or `1`.
+The event trackers do not impact bounce rate of the page which embeds the video. The value of the opt_noninteraction parameter is set to `true` or `1`. Include the **data-bounce** attribute and set its value to true to override this setting.
 
 ## Google Tag Manager
 If you'd like to integrate with Google Tag Manager, the dataLayer variable names are below.
@@ -123,6 +124,11 @@ Have a bug? Please create an [issue](https://github.com/sanderheilbron/vimeo.ga.
 Want to contribute? Great! Just fork the project, make your changes and open a [pull request](https://github.com/sanderheilbron/vimeo.ga.js/pulls).
 
 ## Changelog
+### 0.5 (December 23, 2014)
+* Support for multiple videos per page.
+* Possibility to decide if video player events have impact on the bounce rate.
+* Updated documentation.
+
 ### 0.4 (June 22, 2014)
 * Support for Universal Analytics and Google Tag Manager.
 * 'Resumed video' added as basic event tracker.
