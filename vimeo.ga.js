@@ -8,14 +8,14 @@
 
 var vimeoGAJS = {
 	iframes : [],
-  gaTracker : undefined,
-  eventMarker : {},
+	gaTracker : undefined,
+	eventMarker : {},
 
   init: function () {
-  	vimeoGAJS.iframes = $('iframe');
+    vimeoGAJS.iframes = $('iframe');
     
     $.each(vimeoGAJS.iframes, function (index, iframe) {  
-    	var iframeId = $(iframe).attr('id');
+      var iframeId = $(iframe).attr('id');
         
       vimeoGAJS.eventMarker[iframeId] = {
       	'progress25' : false,
@@ -29,33 +29,33 @@ var vimeoGAJS = {
         'timePercentComplete' : 0
       };
     });
-          
-	  // Check which version of Google Analytics is used
-	  if (typeof ga === "function") {
-	    vimeoGAJS.gaTracker = 'ua'; // Universal Analytics (universal.js)
-	    //console.info('Universal Analytics');
-	  }
+
+    // Check which version of Google Analytics is used
+    if (typeof ga === "function") {
+      vimeoGAJS.gaTracker = 'ua'; // Universal Analytics (universal.js)
+      //console.info('Universal Analytics');
+    }
 	  
-	  if (typeof _gaq !== "undefined" && typeof _gaq.push === "function") {
-	    vimeoGAJS.gaTracker = 'ga'; // Classic Analytics (ga.js)
-	    //console.info('Classic Analytics');
-	  }
+    if (typeof _gaq !== "undefined" && typeof _gaq.push === "function") {
+      vimeoGAJS.gaTracker = 'ga'; // Classic Analytics (ga.js)
+      //console.info('Classic Analytics');
+    }
 
-	  if (typeof dataLayer !== "undefined" && typeof dataLayer.push === "function") {
-	    vimeoGAJS.gaTracker = 'gtm'; // Google Tag Manager (dataLayer)
-	    //console.info('Google Tag Manager');
-	  }
+    if (typeof dataLayer !== "undefined" && typeof dataLayer.push === "function") {
+      vimeoGAJS.gaTracker = 'gtm'; // Google Tag Manager (dataLayer)
+      //console.info('Google Tag Manager');
+    }
 
-	  // Listen for messages from the player
-	  if (window.addEventListener) {
-	    window.addEventListener('message', vimeoGAJS.onMessageReceived, false);
-	  } else {
-	    window.attachEvent('onmessage', vimeoGAJS.onMessageReceived, false);
-	  }
-  },
+		// Listen for messages from the player
+		if (window.addEventListener) {
+			window.addEventListener('message', vimeoGAJS.onMessageReceived, false);
+		} else {
+			window.attachEvent('onmessage', vimeoGAJS.onMessageReceived, false);
+		}
+	},
 
-  // Handle messages received from the player
-  onMessageReceived: function(e) {
+	// Handle messages received from the player
+	onMessageReceived: function(e) {
     if (e.origin.replace('https:', 'http:') !== "http://player.vimeo.com" || typeof vimeoGAJS.gaTracker === 'undefined') {
       //console.warn('Tracker is missing!');
       return;
@@ -83,8 +83,8 @@ var vimeoGAJS = {
 
     case 'play':
       if (!vimeoGAJS.eventMarker[iframeId].videoPlayed) {
-        vimeoGAJS.sendEvent(iframeEl, 'Started video');
-        vimeoGAJS.eventMarker[iframeId].videoPlayed = true; // Avoid subsequent play trackings
+				vimeoGAJS.sendEvent(iframeEl, 'Started video');
+				vimeoGAJS.eventMarker[iframeId].videoPlayed = true; // Avoid subsequent play trackings
       } else if (!vimeoGAJS.eventMarker[iframeId].videoResumed && vimeoGAJS.eventMarker[iframeId].videoPaused) {
         vimeoGAJS.sendEvent(iframeEl, 'Resumed video');
         vimeoGAJS.eventMarker[iframeId].videoResumed = true; // Avoid subsequent resume trackings
@@ -102,16 +102,16 @@ var vimeoGAJS = {
       }
       break;
     }
-  },
-  
+	},
+
   getUrl : function (iframeSrc) {
-	  // Domain protocol (http or https)
+		// Domain protocol (http or https)
     var protocol = document.URL.split(':')[0];
     
     // Match protocol with what is in document.URL
 		if (iframeSrc.match(/^http/) === null) {
     	return protocol + ':' + iframeSrc;
-  	}
+		}
   },
 
   // Helper function for sending a message to the player
@@ -126,31 +126,31 @@ var vimeoGAJS = {
     
     // Source URL
     var iframeSrc = $(iframe).attr('src').split('?')[0];
-    
+
     iframe.contentWindow.postMessage(JSON.stringify(data), vimeoGAJS.getUrl(iframeSrc));
   },
 
   onReady :function() {
     $.each(vimeoGAJS.iframes, function(index, iframe) {
-	    vimeoGAJS.post('addEventListener', 'play', iframe);
-	    vimeoGAJS.post('addEventListener', 'seek', iframe);
-	    vimeoGAJS.post('addEventListener', 'pause', iframe);
-	    vimeoGAJS.post('addEventListener', 'finish', iframe);
-	    vimeoGAJS.post('addEventListener', 'playProgress', iframe);
-  	});
+			vimeoGAJS.post('addEventListener', 'play', iframe);
+			vimeoGAJS.post('addEventListener', 'seek', iframe);
+			vimeoGAJS.post('addEventListener', 'pause', iframe);
+			vimeoGAJS.post('addEventListener', 'finish', iframe);
+			vimeoGAJS.post('addEventListener', 'playProgress', iframe);
+		});
   },
 
   onPause: function(iframeEl) {
-  	var iframeId = iframeEl.attr('id');
+		var iframeId = iframeEl.attr('id');
     if (vimeoGAJS.eventMarker[iframeId].timePercentComplete < 99 && !vimeoGAJS.eventMarker[iframeId].videoPaused) {
-      vimeoGAJS.sendEvent(iframeEl, 'Paused video');
-      vimeoGAJS.eventMarker[iframeId].videoPaused = true; // Avoid subsequent pause trackings
+			vimeoGAJS.sendEvent(iframeEl, 'Paused video');
+			vimeoGAJS.eventMarker[iframeId].videoPaused = true; // Avoid subsequent pause trackings
     }
   },
 
   // Tracking video progress
   onPlayProgress: function(data, iframeEl) {
-  	var progress,
+		var progress,
         iframeId = iframeEl.attr('id');
     vimeoGAJS.eventMarker[iframeId].timePercentComplete = Math.round((data.percent) * 100); // Round to a whole number
 
@@ -179,13 +179,13 @@ var vimeoGAJS = {
   },
   
   // Send event to Classic Analytics, Universal Analytics or Google Tag Manager
-  sendEvent: function (iframeEl, action) {
-  	var iframeSrc = iframeEl.attr('src').split('?')[0];
-  	var bounce = iframeEl.data('bounce');
+	sendEvent: function (iframeEl, action) {
+		var iframeSrc = iframeEl.attr('src').split('?')[0];
+		var bounce = iframeEl.data('bounce');
     
     switch (vimeoGAJS.gaTracker) {
     case 'gtm':
-    	dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': action, 'eventLabel': vimeoGAJS.getUrl(iframeSrc), 'eventValue': undefined, 'eventNonInteraction': (bounce) ? false : true });
+			dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': action, 'eventLabel': vimeoGAJS.getUrl(iframeSrc), 'eventValue': undefined, 'eventNonInteraction': (bounce) ? false : true });
       break;
 
     case 'ua':
