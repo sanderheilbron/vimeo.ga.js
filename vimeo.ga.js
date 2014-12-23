@@ -54,8 +54,8 @@ var vimeoGAJS = {
     }
   },
 
-	// Handle messages received from the player
-	onMessageReceived: function(e) {
+  // Handle messages received from the player
+  onMessageReceived: function(e) {
     if (e.origin.replace('https:', 'http:') !== "http://player.vimeo.com" || typeof vimeoGAJS.gaTracker === 'undefined') {
       //console.warn('Tracker is missing!');
       return;
