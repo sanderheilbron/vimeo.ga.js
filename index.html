@@ -160,7 +160,7 @@
       <div class="container">
         <ul>
           <li>
-            <a href="https://github.com/sanderheilbron/vimeo.ga.js/releases/download/0.4/vimeo.ga.min.js" class="button" title="Download"><span>Download</span></a>
+            <a href="https://github.com/sanderheilbron/vimeo.ga.js/releases/download/0.5/vimeo.ga.min.js" class="button" title="Download"><span>Download</span></a>
           </li>
           <li>
             <a href="https://github.com/sanderheilbron/vimeo.ga.js" class="button" title="View on GitHub"><span>View on GitHub</span></a>
@@ -193,7 +193,7 @@
         <hr>
         <h5>With some options</h5>
         <div data-gist="2d9a572982a94ab295a3"></div>
-        <p>The <code>data-progress</code> and <code>data-seek</code> attributes enable tracking of progress and skip events.</p>
+        <p>The <code>data-progress</code> and <code>data-seek</code> attributes enable tracking of progress and skip events. With <code>data-bounce</code> set to true event trackers will impact bounce rate of the page which embeds the video.</p>
         <p>The iframe embeds a Vimeo video player and allows Vimeo to serve an HTML5 player rather than a Flash player for mobile devices that do not support Flash.</p>
       </div>
     </section>
@@ -250,7 +250,7 @@
         <div data-gist="d48270c5b869cd34838b" class="last-gist"></div>
 
         <h4>Bounce rate</h4>
-        <p>The event trackers do not impact bounce rate of the page which embeds the video. The value of the opt_noninteraction parameter is set to <code>true</code> or <code>1</code>.</p>
+        <p>The event trackers do not impact bounce rate of the page which embeds the video. The value of the opt_noninteraction parameter is set to <code>true</code> or <code>1</code>. Include the <code>data-bounce</code> attribute and set its value to <code>true</code> to override this setting.</p>
       </div>
     </section>
   </div>
