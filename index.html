@@ -86,38 +86,38 @@
   
 	<script>
 		(function(){
-		    function addFont() {
-		        var style = document.createElement('style');
-		        style.rel = 'stylesheet';
-		        document.head.appendChild(style);
-		        style.textContent = localStorage.sourceSansPro;
-		    }
+		  function addFont() {
+		    var style = document.createElement('style');
+		    style.rel = 'stylesheet';
+		    document.head.appendChild(style);
+		    style.textContent = localStorage.sourceSansPro;
+		  }
 		
-		    try {
-		        if (localStorage.sourceSansPro) {
-		            // The font is in localStorage, we can load it directly
-		            addFont();
-		        } else {
-		            // We have to first load the font file asynchronously
-		            var request = new XMLHttpRequest();
-		            request.open('GET', 'css/source-sans-pro.woff.css', true);
+		  try {
+		    if (localStorage.sourceSansPro) {
+		      // The font is in localStorage, we can load it directly
+		      addFont();
+		    } else {
+		      // We have to first load the font file asynchronously
+		      var request = new XMLHttpRequest();
+		      request.open('GET', 'css/source-sans-pro.woff.css', true);
+
+		      request.onload = function() {
+		        if (request.status >= 200 && request.status < 400) {
+		          // We save the file in localStorage
+		          localStorage.sourceSansPro = request.responseText;
 		
-		            request.onload = function() {
-		                if (request.status >= 200 && request.status < 400) {
-		                    // We save the file in localStorage
-		                    localStorage.sourceSansPro = request.responseText;
-		
-		                    // ... and load the font
-		                    addFont();
-		                }
-		            }
-		
-		            request.send();
+		          // ... and load the font
+		          addFont();
 		        }
-		    } catch(ex) {
-		        // maybe load the font synchronously for woff-capable browsers
-		        // to avoid blinking on every request when localStorage is not available
+		      }
+		
+		      request.send();
 		    }
+		  } catch(ex) {
+		    // maybe load the font synchronously for woff-capable browsers
+		    // to avoid blinking on every request when localStorage is not available
+		  }
 		}());
 	</script>
 
@@ -193,7 +193,7 @@
         <hr>
         <h5>With some options</h5>
         <div data-gist="2d9a572982a94ab295a3"></div>
-        <p>The <code>data-progress</code> and <code>data-seek</code> attributes enable tracking of progress and skip events. With <code>data-bounce</code> set to true event trackers will impact bounce rate of the page which embeds the video.</p>
+        <p>The <code>data-progress</code> and <code>data-seek</code> attributes enable tracking of progress and skip events. With <code>data-bounce</code> set to <code>true</code> event trackers will impact bounce rate of the page which embeds the video.</p>
         <p>The iframe embeds a Vimeo video player and allows Vimeo to serve an HTML5 player rather than a Flash player for mobile devices that do not support Flash.</p>
       </div>
     </section>
