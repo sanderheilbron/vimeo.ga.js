@@ -1,1 +1,382 @@
-<!DOCTYPE html><html lang=en><head><meta charset=utf-8><link rel=dns-prefetch href=//www.google-analytics.com><link rel=prefetch href=//www.google-analytics.com><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><link rel=canonical href="http://www.sanderheilbron.nl/vimeo.ga.js/"><title>vimeo.ga.js &mdash; A Google Analytics plugin for measuring Vimeo Player Events</title><meta name=description content="An easy-to-use solution to track Vimeo Player API events with the Event Tracking method of Google Analytics."><meta name=viewport content="width=device-width,initial-scale=1"><meta property=og:title content="vimeo.ga.js — A Google Analytics plugin for measuring Vimeo Player Events"><meta property=og:description content="An easy-to-use solution to track Vimeo Player API events with the Event Tracking method of Google Analytics."><meta property=og:url content="http://www.sanderheilbron.nl/vimeo.ga.js/"><meta name=twitter:card content=summary><meta name=twitter:creator content=@sanderheilbron><meta name=twitter:url content="http://www.sanderheilbron.nl/vimeo.ga.js/"><meta name=twitter:title content="vimeo.ga.js — A Google Analytics plugin for measuring Vimeo Player Events"><meta name=twitter:description content="An easy-to-use solution to track Vimeo Player API events with the Event Tracking method of Google Analytics."><style>html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}header{display:block}a{background:0 0}img{border:0}*,:after,:before{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}html{font-family:'Source Sans Pro Regular','Helvetica Neue',helvetica,arial,sans-serif;font-size:100%;line-height:1.5;font-weight:400;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}body{background-color:#fff;color:#555}.container{margin:0 auto;max-width:48rem;width:90%}header{padding:3em 0 2em;margin-bottom:3rem;background-color:#28affa}header img{width:130px}h1{font-size:260%;font-weight:300;text-align:center;margin:.18em 0 0;color:#fff;font-family:'Source Sans Pro Light','Helvetica Neue',helvetica,arial,sans-serif}.tagline{font-size:150%;font-weight:300;text-align:center;margin:0 0 1em;color:#fff;line-height:1.3;padding-top:0;font-family:'Source Sans Pro Light','Helvetica Neue',helvetica,arial,sans-serif}a{color:#3f4854}.intro{text-align:center;font-size:100%;color:#707d8d}.intro:last-of-type{margin:0 0 1em}img,source{width:100%;display:block;margin:0 auto}.demo{padding-bottom:3rem}ul{display:inline-block;text-align:left}.downloads{padding:0 0 1rem;list-style-type:none;text-align:center}.downloads ul{padding:0}.downloads ul li{margin-bottom:1em;list-style-type:none}.downloads a{display:inline-block}.downloads a:link{opacity:1}.button{-moz-appearance:none;-webkit-appearance:none;appearance:none;background-color:#fff;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;border:2px solid #28affa;color:#28affa;cursor:pointer;display:block;text-align:center;padding:.4rem 0 .2rem;white-space:nowrap;width:250px;text-decoration:none}a.button span{font-size:1.1rem;line-height:2.4rem;color:#28affa;vertical-align:super;font-style:normal;text-decoration:none}.js-video{height:0;padding-top:25px;padding-bottom:67.5%;margin-bottom:10px;position:relative;overflow:hidden}.js-video.widescreen{padding-bottom:57.25%}.js-video.vimeo{padding-top:0}.downloads ul{padding-bottom:1rem}.downloads li span{display:block}.downloads span{font-size:80%;color:#707d8d}.clearfix:after,.clearfix:before{content:" ";display:table}.clearfix:after{clear:both}@media (min-width:40rem){.column{float:left;margin:0;padding-left:1rem;padding-right:1rem}.column.full{width:100%}header img{width:160px}.intro{font-size:120%}ul{display:inline-block;margin:0;text-align:left}.downloads ul li{float:left;margin:0 20px 20px 0}.downloads ul li:last-of-type{margin:0 0 20px}}@media (min-width:64rem){html{font-size:120%}.intro{font-size:120%;padding-left:3rem;padding-right:3rem}header img{width:160px}}</style><script>function loadCSS(e,t,n){"use strict";function s(){for(var t,r=0;r<i.length;r++)i[r].href&&i[r].href.indexOf(e)>-1&&(t=!0);t?o.media=n||"all":setTimeout(s)}var o=window.document.createElement("link"),r=t||window.document.getElementsByTagName("script")[0],i=window.document.styleSheets;return o.rel="stylesheet",o.href=e,o.media="only x",r.parentNode.insertBefore(o,r),s(),o}loadCSS("css/stylesheet.min.be2a0ef8.css");</script><noscript><link rel="stylesheet" href="css/stylesheet.min.be2a0ef8.css"></noscript><script>!function(){function e(){var e=document.createElement("style");e.rel="stylesheet",document.head.appendChild(e),e.textContent=localStorage.sourceSansPro}try{if(localStorage.sourceSansPro)e();else{var t=new XMLHttpRequest;t.open("GET","css/source-sans-pro.woff.css",!0),t.onload=function(){t.status>=200&&t.status<400&&(localStorage.sourceSansPro=t.responseText,e())},t.send()}}catch(n){}}();</script><!--[if lt IE 9]><script src="js/html5shiv.min.js"></script><![endif]--><body><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MKL8JD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>!function(e,t,n,s,o){e[s]=e[s]||[],e[s].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var a=t.getElementsByTagName(n)[0],r=t.createElement(n),c="dataLayer"!=s?"&l="+s:"";r.async=!0,r.src="//www.googletagmanager.com/gtm.js?id="+o+c,a.parentNode.insertBefore(r,a)}(window,document,"script","dataLayer","GTM-MKL8JD");</script><header class=clearfix><div class=container><div class="column full"><img srcset="images/vimeo.png 160w, images/vimeo@2x.png 320w" alt=Vimeo><h1>vimeo.ga.js</h1><p class=tagline>A Google Analytics plugin for measuring Vimeo Player Events</p></div></div></header><div class=container><div class="column full"><p class=intro>An easy-to-use solution to track Vimeo Player API events with the Event Tracking method of Google Analytics. The plugin supports Universal Analytics, Classic Google Analytics, and Google Tag Manager.</p></div><div class="row clearfix downloads"><div class=container><ul><li><a href=https://github.com/sanderheilbron/vimeo.ga.js/releases/download/0.5/vimeo.ga.min.js class=button title=Download><span>Download</span></a></li><li><a href=https://github.com/sanderheilbron/vimeo.ga.js class=button title="View on GitHub"><span>View on GitHub</span></a></li></ul></div></div><div class="row clearfix demo"><div itemprop=video itemscope itemtype=http://schema.org/VideoObject><div class="js-video vimeo widescreen"><picture class=vimeoplayer data-vimeoid=22439234><source srcset="images/vimeo-placeholder-large.jpg, images/vimeo-placeholder-large@2x.jpg 2x" media="(min-width: 64rem)"><source srcset="images/vimeo-placeholder-medium.jpg, images/vimeo-placeholder-medium@2x.jpg 2x" media="(min-width: 40rem)"><source srcset="images/vimeo-placeholder-small.jpg, images/vimeo-placeholder-small@2x.jpg 2x"><img srcset=images/vimeo-placeholder-medium.jpg alt="Click image to load video"></picture></div><p class=video-status>Click image to load video</p><p class=video-details>Video: <span itemprop=name>The Mountain</span><br>Description: <span itemprop=description>Timelapse movie by TSO Photography.</span></p><meta itemprop=embedURL content="http://player.vimeo.com/video/22439234"><meta itemprop=thumbnailUrl content="http://b.vimeocdn.com/ts/145/026/145026168_295.jpg"></div></div></div><div class="row clearfix usage"><section><div class=container><h3>Usage</h3><p>Include the scripts in the body section of the HTML document, just before <code>&lt;/body&gt;</code> tag. You’ll need to be running on a web server instead of opening the file directly in your browser. Flash and JS security restrictions will prevent the API from working when run locally.</p><hr><h5>Basic implementation</h5><div data-gist=e55b306fd9600673bc89></div><hr><h5>With some options</h5><div data-gist=2d9a572982a94ab295a3></div><p>The <code>data-progress</code> and <code>data-seek</code> attributes enable tracking of progress and skip events. With <code>data-bounce</code> set to <code>true</code> event trackers will impact bounce rate of the page which embeds the video.</p><p>The iframe embeds a Vimeo video player and allows Vimeo to serve an HTML5 player rather than a Flash player for mobile devices that do not support Flash.</p></div></section></div><div class="row clearfix bg-light"><section><div class=container><h3>Event Tracking</h3><p>All player events are only tracked once. Restarting the video will not reset the event trackers.</p><h4>Basic event trackers</h4><ul><li>Category: Vimeo</li><li>Action:</li><ul><li><strong>Started video</strong>: when the video starts playing.</li><li><strong>Paused video</strong>: when the video is paused.</li><li><strong>Resumed video</strong>: when the video starts playing when it was paused.</li><li><strong>Completed video</strong>: when the video reaches 100% completion.</li><li><strong>Skipped video</strong>: when the video is skipped forward or backward.</li></ul><li>Label: URL of embedded video on Vimeo.</li></ul><hr><h5>Example Classic Analytics</h5><div data-gist=decd734808bd907f845f></div><hr><h5>Example Universal Analytics</h5><div data-gist=d56652a989508d5e69ae></div><hr><h5>Example Google Tag Manager</h5><div data-gist=dcea549b212a3b22b26a class=last-gist></div><h4>Progress event trackers</h4><ul><li>Category: Vimeo</li><li>Action:</li><ul><li><strong>25% Progress</strong>: when the video reaches 25% of the total video time.</li><li><strong>50% Progress</strong>: when the video reaches 50% of the total video time.</li><li><strong>75% Progress</strong>: when the video reaches 75% of the total video time.</li></ul><li>Label: URL of embedded video on Vimeo.</li></ul><hr><h5>Example Classic Analytics</h5><div data-gist=c87c5b63e3a4cb388f98></div><hr><h5>Example Universal Analytics</h5><div data-gist=2582e57f8468ae0c8c3e></div><hr><h5>Example Google Tag Manager</h5><div data-gist=d48270c5b869cd34838b class=last-gist></div><h4>Bounce rate</h4><p>The event trackers do not impact bounce rate of the page which embeds the video. The value of the opt_noninteraction parameter is set to <code>true</code> or <code>1</code>. Include the <code>data-bounce</code> attribute and set its value to <code>true</code> to override this setting.</p></div></section></div><div class="row clearfix bg-dark"><section><div class=container><h3>Google Tag Manager</h3><p>If you'd like to integrate with Google Tag Manager, the dataLayer variable names are below.</p><div class=table-container><table><thead><tr><th>Macro Name<th>Data Layer Variable<tbody><tr><td>Event Category<td><code>{{eventCategory}}</code><tr><td>Event Action<td><code>{{eventAction}}</code><tr><td>Event Label<td><code>{{eventLabel}}</code><tr><td>Event Value<td><code>{{eventValue}}</code><tr><td>Event Non-Interaction<td><code>{{eventNonInteraction}}</code></table></div><p>Use the GTM event <code>Vimeo</code> to fire the Universal or Classic Google Analytics event tag.</p><p>The GTM container tag could also be used to include the plugin inside a page containing the video. Create a custom HTML tag and trigger this tag so that this script fires on gtm.dom, <code>{{event}}</code> equals <code>gtm.dom</code>, meaning it will fire once the DOM is ready.</p></div></section></div><div class="row clearfix bg-light"><section><div class=container><h3>Requirements</h3><ul><li>jQuery 1.4.3 or higher</li><li>Classic Google Analytics Tracking Code (asynchronous), Universal Analytics Tracking Code or Google Tag Manager container code</li><li>The end user must be using a browser that supports the HTML5 postMessage feature. Most modern browsers support postMessage, though Internet Explorer 7 does not support it.</li></ul></div></section></div><div class="row clearfix social"><div class=container><p class=action>Share with friends</p><ul><li><a href="http://www.facebook.com/share.php?u=http://www.sanderheilbron.nl/vimeo.ga.js/" class=facebook onclick="return fbs_click(400,300)" target=_blank title="Share on Facebook"><span><em>Share</em></span></a></li><li><a href="https://twitter.com/intent/tweet?original_referer=http://www.sanderheilbron.nl/vimeo.ga.js/&text=vimeo.ga.js+—+A+Google+Analytics+plugin+for+measuring+Vimeo+Player+Events.&url=http://www.sanderheilbron.nl/vimeo.ga.js/" onclick="return twt_click(),!1" class=twitter title="Tweet on Twitter"><span><em>Tweet</em></span></a></li></ul></div></div><footer><div class=container><div class="row clearfix"><p>Code licensed under the <a href=http://opensource.org/licenses/MIT>MIT License</a> and available on <a href=https://github.com/sanderheilbron/vimeo.ga.js>GitHub</a>.</p><p>Copyright &copy; 2014 <a href=http://www.sanderheilbron.nl>Sander Heilbron</a>.</p></div></div></footer><script>function loadJS(e,t){"use strict";var n=window.document.getElementsByTagName("script")[0],a=window.document.createElement("script");return a.src=e,a.async=!0,n.parentNode.insertBefore(a,n),t&&"function"==typeof t&&(a.onload=t),a}!function(){function e(e,t){var n=window.document.createElement("script");n.src=e;var a=window.document.getElementsByTagName("head")[0],o=!1;n.onload=n.onreadystatechange=function(){o||this.readyState&&"loaded"!=this.readyState&&"complete"!=this.readyState||(o=!0,t(),n.onload=n.onreadystatechange=null,a.removeChild(n))},a.appendChild(n)}e("js/jquery.min.js",function(){loadJS("js/jquery.gist.min.js"),$(".vimeoplayer").click(function(){$(this).parent().html('<iframe src="https://player.vimeo.com/video/'+$(this).data("vimeoid")+'?api=1" id="vimeo-player" frameborder="0" data-progress="true" data-seek="true" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'),loadJS("js/vimeo.ga.min.js")})})}();</script><script async src=js/social.min.js></script><script async src=js/picturefill.min.js></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <link rel="prefetch" href="//www.google-analytics.com">
+
+    <!-- Basic Page Needs -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="canonical" href="http://www.sanderheilbron.nl/vimeo.ga.js/">
+    <title>vimeo.ga.js &mdash; A Google Analytics plugin for measuring Vimeo Player Events</title>
+    <meta name="description" content="An easy-to-use solution to track Vimeo Player API events with the Event Tracking method of Google Analytics.">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="vimeo.ga.js — A Google Analytics plugin for measuring Vimeo Player Events">
+    <meta property="og:description" content="An easy-to-use solution to track Vimeo Player API events with the Event Tracking method of Google Analytics.">
+    <meta property="og:url" content="http://www.sanderheilbron.nl/vimeo.ga.js/">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@sanderheilbron">
+    <meta name="twitter:url" content="http://www.sanderheilbron.nl/vimeo.ga.js/">
+    <meta name="twitter:title" content="vimeo.ga.js — A Google Analytics plugin for measuring Vimeo Player Events">
+    <meta name="twitter:description" content="An easy-to-use solution to track Vimeo Player API events with the Event Tracking method of Google Analytics.">
+
+    <!-- Critical CSS -->
+    <style>
+      html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}header{display:block}a{background:0 0}img{border:0}*,:after,:before{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}html{font-family:'Source Sans Pro Regular','Helvetica Neue',helvetica,arial,sans-serif;font-size:100%;line-height:1.5;font-weight:400;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}body{background-color:#fff;color:#555}.container{margin:0 auto;max-width:48rem;width:90%}header{padding:3em 0 2em;margin-bottom:3rem;background-color:#28affa}header img{width:130px}h1{font-size:260%;font-weight:300;text-align:center;margin:.18em 0 0;color:#fff;font-family:'Source Sans Pro Light','Helvetica Neue',helvetica,arial,sans-serif}.tagline{font-size:150%;font-weight:300;text-align:center;margin:0 0 1em;color:#fff;line-height:1.3;padding-top:0;font-family:'Source Sans Pro Light','Helvetica Neue',helvetica,arial,sans-serif}a{color:#3f4854}.intro{text-align:center;font-size:100%;color:#707d8d}.intro:last-of-type{margin:0 0 1em}img,source{width:100%;display:block;margin:0 auto}.demo{padding-bottom:3rem}ul{display:inline-block;text-align:left}.downloads{padding:0 0 1rem;list-style-type:none;text-align:center}.downloads ul{padding:0}.downloads ul li{margin-bottom:1em;list-style-type:none}.downloads a{display:inline-block}.downloads a:link{opacity:1}.button{-moz-appearance:none;-webkit-appearance:none;appearance:none;background-color:#fff;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;border:2px solid #28affa;color:#28affa;cursor:pointer;display:block;text-align:center;padding:.4rem 0 .2rem;white-space:nowrap;width:250px;text-decoration:none}a.button span{font-size:1.1rem;line-height:2.4rem;color:#28affa;vertical-align:super;font-style:normal;text-decoration:none}.js-video{height:0;padding-top:25px;padding-bottom:67.5%;margin-bottom:10px;position:relative;overflow:hidden}.js-video.widescreen{padding-bottom:57.25%}.js-video.vimeo{padding-top:0}.downloads ul{padding-bottom:1rem}.downloads li span{display:block}.downloads span{font-size:80%;color:#707d8d}.clearfix:after,.clearfix:before{content:" ";display:table}.clearfix:after{clear:both}@media (min-width:40rem){.column{float:left;margin:0;padding-left:1rem;padding-right:1rem}.column.full{width:100%}header img{width:160px}.intro{font-size:120%}ul{display:inline-block;margin:0;text-align:left}.downloads ul li{float:left;margin:0 20px 20px 0}.downloads ul li:last-of-type{margin:0 0 20px}}@media (min-width:64rem){html{font-size:120%}.intro{font-size:120%;padding-left:3rem;padding-right:3rem}header img{width:160px}}
+    </style>
+
+    <script>
+      /*!
+      loadCSS: load a CSS file asynchronously.
+      [c]2014 @scottjehl, Filament Group, Inc.
+      Licensed MIT
+      */
+      function loadCSS(href, before, media){
+        "use strict";
+        // Arguments explained:
+        // `href` is the URL for your CSS file.
+        // `before` optionally defines the element we'll use as a reference for injecting our <link>
+        // By default, `before` uses the first <script> element in the page.
+        // However, since the order in which stylesheets are referenced matters, you might need a more specific location in your document.
+        // If so, pass a different reference element to the `before` argument and it'll insert before that instead
+        // note: `insertBefore` is used instead of `appendChild`, for safety re: http://www.paulirish.com/2011/surefire-dom-element-insertion/
+        var ss = window.document.createElement('link');
+        var ref = before || window.document.getElementsByTagName('script')[0];
+        var sheets = window.document.styleSheets;
+        ss.rel = 'stylesheet';
+        ss.href = href;
+        // temporarily, set media to something non-matching to ensure it'll fetch without blocking render
+        ss.media = 'only x';
+        // inject link
+        ref.parentNode.insertBefore(ss, ref);
+        // This function sets the link's media back to `all` so that the stylesheet applies once it loads
+        // It is designed to poll until document.styleSheets includes the new sheet.
+        function toggleMedia(){
+          var defined;
+          for(var i = 0; i < sheets.length; i++){
+            if(sheets[i].href && sheets[i].href.indexOf(href) > -1 ){
+              defined = true;
+            }
+          }
+          if(defined){
+            ss.media = media || 'all';
+          }
+          else {
+            setTimeout(toggleMedia);
+          }
+        }
+        toggleMedia();
+        return ss;
+      }
+
+      loadCSS('css/stylesheet.min.be2a0ef8.css');
+
+    </script>
+    <noscript>
+      <link rel="stylesheet" href="css/stylesheet.min.be2a0ef8.css">
+    </noscript>
+
+    <script>
+      (function(){
+          function addFont() {
+              var style = document.createElement('style');
+              style.rel = 'stylesheet';
+              document.head.appendChild(style);
+              style.textContent = localStorage.sourceSansPro;
+          }
+
+          try {
+              if (localStorage.sourceSansPro) {
+                  // The font is in localStorage, we can load it directly
+                  addFont();
+              } else {
+                  // We have to first load the font file asynchronously
+                  var request = new XMLHttpRequest();
+                  request.open('GET', 'css/source-sans-pro.woff.css', true);
+
+                  request.onload = function() {
+                      if (request.status >= 200 && request.status < 400) {
+                          // We save the file in localStorage
+                          localStorage.sourceSansPro = request.responseText;
+
+                          // ... and load the font
+                          addFont();
+                      }
+                  }
+
+                  request.send();
+              }
+          } catch(ex) {
+              // maybe load the font synchronously for woff-capable browsers
+              // to avoid blinking on every request when localStorage is not available
+          }
+      }());
+    </script>
+
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MKL8JD"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MKL8JD');</script>
+    <!-- End Google Tag Manager -->
+
+    <header class="clearfix">
+      <div class='container'>
+        <div class="column full">
+          <img srcset="images/vimeo.png 160w, images/vimeo@2x.png 320w" alt="Vimeo">
+          <h1>vimeo.ga.js</h1>
+          <p class="tagline">A Google Analytics plugin for measuring Vimeo Player Events</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="column full">
+        <p class="intro">An easy-to-use solution to track Vimeo Player API events with the Event Tracking method of Google Analytics. The plugin supports Universal Analytics, Classic Google Analytics, and Google Tag Manager.</p>
+      </div>
+
+      <div class="row clearfix downloads">
+        <div class="container">
+          <ul>
+            <li>
+              <a href="https://github.com/sanderheilbron/vimeo.ga.js/releases/download/0.5/vimeo.ga.min.js" class="button" title="Download"><span>Download</span></a>
+            </li>
+            <li>
+              <a href="https://github.com/sanderheilbron/vimeo.ga.js" class="button" title="View on GitHub"><span>View on GitHub</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row clearfix demo">
+        <div itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+          <div class="js-video vimeo widescreen">
+            <picture class="vimeoplayer" data-vimeoid="22439234">
+              <source srcset="images/vimeo-placeholder-large.jpg, images/vimeo-placeholder-large@2x.jpg 2x" media="(min-width: 64rem)">
+              <source srcset="images/vimeo-placeholder-medium.jpg, images/vimeo-placeholder-medium@2x.jpg 2x" media="(min-width: 40rem)">
+              <source srcset="images/vimeo-placeholder-small.jpg, images/vimeo-placeholder-small@2x.jpg 2x">
+              <img srcset="images/vimeo-placeholder-medium.jpg" alt="Click image to load video">
+            </picture>
+          </div>
+          <p class="video-status">Click image to load video</p>
+          <p class="video-details">Video: <span itemprop="name">The Mountain</span><br />Description: <span itemprop="description">Timelapse movie by TSO Photography.</span></p>
+          <meta itemprop="embedURL" content="http://player.vimeo.com/video/22439234" />
+          <meta itemprop="thumbnailUrl" content="http://b.vimeocdn.com/ts/145/026/145026168_295.jpg" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row clearfix usage">
+      <section>
+        <div class="container">
+          <h3>Usage</h3>
+          <p>Include the scripts in the body section of the HTML document, just before <code>&lt;/body&gt;</code> tag. You’ll need to be running on a web server instead of opening the file directly in your browser. Flash and JS security restrictions will prevent the API from working when run locally.</p>
+          <hr>
+          <h5>Basic implementation</h5>
+          <div data-gist="e55b306fd9600673bc89"></div>
+          <hr>
+          <h5>With some options</h5>
+          <div data-gist="2d9a572982a94ab295a3"></div>
+          <p>The <code>data-progress</code> and <code>data-seek</code> attributes enable tracking of progress and skip events. With <code>data-bounce</code> set to <code>true</code> event trackers will impact bounce rate of the page which embeds the video.</p>
+          <p>The iframe embeds a Vimeo video player and allows Vimeo to serve an HTML5 player rather than a Flash player for mobile devices that do not support Flash.</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="row clearfix bg-light">
+      <section>
+        <div class="container">
+          <h3>Event Tracking</h3>
+          <p>All player events are only tracked once. Restarting the video will not reset the event trackers.</p>
+
+          <h4>Basic event trackers</h4>
+          <ul>
+            <li>Category: Vimeo</li>
+            <li>Action:</li>
+            <ul>
+              <li><strong>Started video</strong>: when the video starts playing.</li>
+              <li><strong>Paused video</strong>: when the video is paused.</li>
+              <li><strong>Resumed video</strong>: when the video starts playing when it was paused.</li>
+              <li><strong>Completed video</strong>: when the video reaches 100% completion.</li>
+              <li><strong>Skipped video</strong>: when the video is skipped forward or backward.</li>
+            </ul>
+            <li>Label: URL of embedded video on Vimeo.</li>
+          </ul>
+          <hr>
+          <h5>Example Classic Analytics</h5>
+          <div data-gist="decd734808bd907f845f"></div>
+          <hr>
+          <h5>Example Universal Analytics</h5>
+          <div data-gist="d56652a989508d5e69ae"></div>
+          <hr>
+          <h5>Example Google Tag Manager</h5>
+          <div data-gist="dcea549b212a3b22b26a" class="last-gist"></div>
+
+          <h4>Progress event trackers</h4>
+          <ul>
+            <li>Category: Vimeo</li>
+            <li>Action:</li>
+            <ul>
+              <li><strong>25% Progress</strong>: when the video reaches 25% of the total video time.</li>
+              <li><strong>50% Progress</strong>: when the video reaches 50% of the total video time.</li>
+              <li><strong>75% Progress</strong>: when the video reaches 75% of the total video time.</li>
+            </ul>
+            <li>Label: URL of embedded video on Vimeo.</li>
+          </ul>
+          <hr>
+          <h5>Example Classic Analytics</h5>
+          <div data-gist="c87c5b63e3a4cb388f98"></div>
+          <hr>
+          <h5>Example Universal Analytics</h5>
+          <div data-gist="2582e57f8468ae0c8c3e"></div>
+          <hr>
+          <h5>Example Google Tag Manager</h5>
+          <div data-gist="d48270c5b869cd34838b" class="last-gist"></div>
+
+          <h4>Bounce rate</h4>
+          <p>The event trackers do not impact bounce rate of the page which embeds the video. The value of the opt_noninteraction parameter is set to <code>true</code> or <code>1</code>. Include the <code>data-bounce</code> attribute and set its value to <code>true</code> to override this setting.</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="row clearfix bg-dark">
+      <section>
+        <div class="container">
+          <h3>Google Tag Manager</h3>
+          <p>If you'd like to integrate with Google Tag Manager, the dataLayer variable names are below.</p>
+          <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Macro Name</th>
+                <th>Data Layer Variable</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Event Category</td>
+                <td><code>{{eventCategory}}</code></td>
+              </tr>
+              <tr>
+                <td>Event Action</td>
+                <td><code>{{eventAction}}</code></td>
+              </tr>
+              <tr>
+                <td>Event Label</td>
+                <td><code>{{eventLabel}}</code></td>
+              </tr>
+              <tr>
+                <td>Event Value</td>
+                <td><code>{{eventValue}}</code></td>
+              </tr>
+              <tr>
+                <td>Event Non-Interaction</td>
+                <td><code>{{eventNonInteraction}}</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+          <p>Use the GTM event <code>Vimeo</code> to fire the Universal or Classic Google Analytics event tag.</p>
+          <p>The GTM container tag could also be used to include the plugin inside a page containing the video. Create a custom HTML tag and trigger this tag so that this script fires on gtm.dom, <code>{{event}}</code> equals <code>gtm.dom</code>, meaning it will fire once the DOM is ready.</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="row clearfix bg-light">
+      <section>
+        <div class="container">
+          <h3>Requirements</h3>
+          <ul>
+            <li>jQuery 1.4.3 or higher</li>
+            <li>Classic Google Analytics Tracking Code (asynchronous), Universal Analytics Tracking Code or Google Tag Manager container code</li>
+            <li>The end user must be using a browser that supports the HTML5 postMessage feature. Most modern browsers support postMessage, though Internet Explorer 7 does not support it.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <div class="row clearfix social">
+      <div class="container">
+        <p class="action">Share with friends</p>
+        <ul>
+          <li><a href="http://www.facebook.com/share.php?u=http://www.sanderheilbron.nl/vimeo.ga.js/" class="facebook" onclick="return fbs_click(400, 300)" target="_blank" title="Share on Facebook"><span><em>Share</em></span></a></li>
+          <li><a href="https://twitter.com/intent/tweet?original_referer=http://www.sanderheilbron.nl/vimeo.ga.js/&text=vimeo.ga.js+—+A+Google+Analytics+plugin+for+measuring+Vimeo+Player+Events.&url=http://www.sanderheilbron.nl/vimeo.ga.js/" onclick="twt_click();return false;" class="twitter" title="Tweet on Twitter"><span><em>Tweet</em></span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row clearfix">
+          <p>Code licensed under the <a href="http://opensource.org/licenses/MIT">MIT License</a> and available on <a href="https://github.com/sanderheilbron/vimeo.ga.js">GitHub</a>.</p>
+          <p>Copyright &copy; 2014 <a href="http://www.sanderheilbron.nl">Sander Heilbron</a>.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JS -->
+    <script>
+      /*! loadJS: load a JS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. (Based on http://goo.gl/REQGQ by Paul Irish). Licensed MIT */
+      function loadJS(src, cb){
+        "use strict";
+        var ref = window.document.getElementsByTagName('script')[0];
+        var script = window.document.createElement('script');
+        script.src = src;
+        script.async = true;
+        ref.parentNode.insertBefore(script, ref);
+        if (cb && typeof(cb) === 'function') {
+          script.onload = cb;
+        }
+        return script;
+      }
+
+      /*! Load jQuery and execute other scripts after jQuery is loaded */
+      (function() {
+        function getScript(src, success){
+          var script = window.document.createElement('script');
+          script.src = src;
+          var head = window.document.getElementsByTagName('head')[0],
+              done = false;
+          script.onload = script.onreadystatechange = function() {
+            if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+              done = true;
+              success();
+              script.onload = script.onreadystatechange = null;
+              head.removeChild(script);
+            }
+          };
+          head.appendChild(script);
+        }
+
+        getScript('js/jquery.min.js', function() {
+          loadJS('js/jquery.gist.min.js');
+          $('.vimeoplayer').click(function(){
+            $(this).parent().html('<iframe src="https://player.vimeo.com/video/'+$(this).data('vimeoid')+'?api=1" id="vimeo-player" frameborder="0" data-progress="true" data-seek="true" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
+            loadJS('js/vimeo.ga.min.js');
+          });
+        });
+      })();
+    </script>
+
+    <!-- Async JS -->
+    <script async src="js/social.min.js"></script>
+    <script async src="js/picturefill.min.js"></script>
+  </body>
+</html>
