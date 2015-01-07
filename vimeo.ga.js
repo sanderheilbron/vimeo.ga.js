@@ -13,10 +13,10 @@ var vimeoGAJS = {
 
   init: function () {
     vimeoGAJS.iframes = $('iframe');
-    
-    $.each(vimeoGAJS.iframes, function (index, iframe) {  
+
+    $.each(vimeoGAJS.iframes, function (index, iframe) {
       var iframeId = $(iframe).attr('id');
-        
+
       vimeoGAJS.eventMarker[iframeId] = {
       	'progress25' : false,
         'progress50' : false,
@@ -35,7 +35,7 @@ var vimeoGAJS = {
       vimeoGAJS.gaTracker = 'ua'; // Universal Analytics (universal.js)
       //console.info('Universal Analytics');
     }
-	  
+
     if (typeof _gaq !== "undefined" && typeof _gaq.push === "function") {
       vimeoGAJS.gaTracker = 'ga'; // Classic Analytics (ga.js)
       //console.info('Classic Analytics');
@@ -60,7 +60,7 @@ var vimeoGAJS = {
       //console.warn('Tracker is missing!');
       return;
     }
-    
+
     var data = JSON.parse(e.data),
         iframeEl = $("#"+data.player_id),
         iframeId = iframeEl.attr('id');
@@ -108,10 +108,12 @@ var vimeoGAJS = {
     // Domain protocol (http or https)
     var protocol = document.URL.split(':')[0];
 
-    // Match protocol with what is in document.URL
+    // If protocol not present add what is in document.URL and return full src
     if (iframeSrc.match(/^http/) === null) {
       return protocol + ':' + iframeSrc;
     }
+    // Return original source
+    return iframeSrc;
   },
 
   // Helper function for sending a message to the player
@@ -123,7 +125,7 @@ var vimeoGAJS = {
     if (value) {
       data.value = value;
     }
-    
+
     // Source URL
     var iframeSrc = $(iframe).attr('src').split('?')[0];
 
@@ -177,12 +179,12 @@ var vimeoGAJS = {
       vimeoGAJS.sendEvent(iframeEl, progress);
     }
   },
-  
+
   // Send event to Classic Analytics, Universal Analytics or Google Tag Manager
   sendEvent: function (iframeEl, action) {
     var iframeSrc = iframeEl.attr('src').split('?')[0];
     var bounce = iframeEl.data('bounce');
-    
+
     switch (vimeoGAJS.gaTracker) {
     case 'gtm':
       dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': action, 'eventLabel': vimeoGAJS.getUrl(iframeSrc), 'eventValue': undefined, 'eventNonInteraction': (bounce) ? false : true });
