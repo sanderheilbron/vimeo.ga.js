@@ -12,23 +12,8 @@ var vimeoGAJS = {
   eventMarker : {},
 
   init: function () {
-    vimeoGAJS.iframes = $('iframe');
-    
-    $.each(vimeoGAJS.iframes, function (index, iframe) {  
-      var iframeId = $(iframe).attr('id');
-        
-      vimeoGAJS.eventMarker[iframeId] = {
-      	'progress25' : false,
-        'progress50' : false,
-        'progress75' : false,
-        'videoPlayed' : false,
-        'videoPaused' : false,
-        'videoResumed' : false,
-        'videoSeeking' : false,
-        'videoCompleted' : false,
-        'timePercentComplete' : 0
-      };
-    });
+		
+	vimeoGAJS.initIframes();
 
     // Check which version of Google Analytics is used
     if (typeof ga === "function") {
@@ -52,6 +37,41 @@ var vimeoGAJS = {
     } else {
       window.attachEvent('onmessage', vimeoGAJS.onMessageReceived, false);
     }
+       
+  },
+
+  initIframes: function(){
+      vimeoGAJS.iframes = $('iframe');
+    
+    vimeoGAJS.iframes = $.grep(vimeoGAJS.iframes, function (iframe, index) { 
+    	
+      	var iframeId = $(iframe).attr('id');	
+
+		// Remove the iframe from our iframe array should it not have an ID - we cannot interact without it
+        if(iframeId === undefined)
+        {
+      		return false;
+        }
+		
+		// As this function is called more than once do not remove the eventMarkers
+		if(vimeoGAJS.eventMarker[iframeId])
+		{
+			return true;
+		}
+		
+        vimeoGAJS.eventMarker[iframeId] = {
+      	'progress25' : false,
+        'progress50' : false,
+        'progress75' : false,
+        'videoPlayed' : false,
+        'videoPaused' : false,
+        'videoResumed' : false,
+        'videoSeeking' : false,
+        'videoCompleted' : false,
+        'timePercentComplete' : 0
+      };
+      return true;
+    });
   },
 
   // Handle messages received from the player
@@ -60,13 +80,21 @@ var vimeoGAJS = {
       //console.warn('Tracker is missing!');
       return;
     }
-    
-    var data = JSON.parse(e.data),
+
+	var data = JSON.parse(e.data),
         iframeEl = $("#"+data.player_id),
         iframeId = iframeEl.attr('id');
+        
+    // If we receive a message for a vimeo iframe that does not have an iframe ID then we cannot handle it, return false.
+    if (iframeId === undefined)
+    {
+    	return false;
+    }
+
 
     switch (data.event) {
     case 'ready':
+      vimeoGAJS.initIframes();
       vimeoGAJS.onReady();
       break;
 
@@ -75,7 +103,7 @@ var vimeoGAJS = {
       break;
 
     case 'seek':
-      if (iframeEl.data('seek') && !vimeoGAJS.eventMarker[iframeId].videoSeeking) {
+      if (data && !vimeoGAJS.eventMarker[iframeId].videoSeeking) {
         vimeoGAJS.sendEvent(iframeEl, 'Skipped video forward or backward');
         vimeoGAJS.eventMarker[iframeId].videoSeeking = true; // Avoid subsequent seek trackings
       }
@@ -123,11 +151,19 @@ var vimeoGAJS = {
     if (value) {
       data.value = value;
     }
-    
+
     // Source URL
-    var iframeSrc = $(iframe).attr('src').split('?')[0];
+    var iframeSrc = $(iframe).attr('src')
+    
+    if (!iframeSrc || iframeSrc.match(/player.vimeo.com/) === null) {
+    	//console.warn(iframeSrc, 'not a vimeo iframe');
+        return;
+    }
+    
+    iframeSrc = iframeSrc.split('?')[0];
 
     iframe.contentWindow.postMessage(JSON.stringify(data), vimeoGAJS.getUrl(iframeSrc));
+
   },
 
   onReady :function() {
@@ -138,6 +174,7 @@ var vimeoGAJS = {
       vimeoGAJS.post('addEventListener', 'finish', iframe);
       vimeoGAJS.post('addEventListener', 'playProgress', iframe);
     });
+    
   },
 
   onPause: function(iframeEl) {
@@ -146,17 +183,15 @@ var vimeoGAJS = {
       vimeoGAJS.sendEvent(iframeEl, 'Paused video');
       vimeoGAJS.eventMarker[iframeId].videoPaused = true; // Avoid subsequent pause trackings
     }
+
   },
 
   // Tracking video progress
   onPlayProgress: function(data, iframeEl) {
+  	
     var progress,
         iframeId = iframeEl.attr('id');
     vimeoGAJS.eventMarker[iframeId].timePercentComplete = Math.round((data.percent) * 100); // Round to a whole number
-
-    if (!iframeEl.data('progress')) {
-      return;
-    }
 
     if (vimeoGAJS.eventMarker[iframeId].timePercentComplete > 24 && !vimeoGAJS.eventMarker[iframeId].progress25) {
       progress = 'Played video: 25%';
@@ -180,6 +215,7 @@ var vimeoGAJS = {
   
   // Send event to Classic Analytics, Universal Analytics or Google Tag Manager
   sendEvent: function (iframeEl, action) {
+	
     var iframeSrc = iframeEl.attr('src').split('?')[0];
     var bounce = iframeEl.data('bounce');
     
@@ -201,4 +237,5 @@ var vimeoGAJS = {
 
 $(function() {
   vimeoGAJS.init();
+  vimeoGAJS.onReady();
 });
