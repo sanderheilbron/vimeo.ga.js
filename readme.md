@@ -124,6 +124,9 @@ Have a bug? Please create an [issue](https://github.com/sanderheilbron/vimeo.ga.
 Want to contribute? Great! Just fork the project, make your changes and open a [pull request](https://github.com/sanderheilbron/vimeo.ga.js/pulls).
 
 ## Changelog
+### 0.5.1 (February 21, 2015)
+* Fix for returning undefined if protocol was present at the source of iframe.
+
 ### 0.5 (December 23, 2014)
 * Support for multiple videos per page.
 * Possibility to decide if video player events have impact on the bounce rate.
