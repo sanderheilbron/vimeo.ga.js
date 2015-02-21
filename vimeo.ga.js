@@ -1,7 +1,7 @@
 /*!
- * vimeo.ga.js | v0.5
+ * vimeo.ga.js | v0.5.1
  * Based on modifications by LukasBeaton (https://github.com/LukasBeaton/vimeo.ga.js)
- * Copyright (c) 2014 Sander Heilbron (http://www.sanderheilbron.nl)
+ * Copyright (c) 2015 Sander Heilbron (http://www.sanderheilbron.nl)
  * MIT licensed
  */
 
