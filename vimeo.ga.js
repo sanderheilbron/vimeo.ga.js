@@ -120,7 +120,9 @@ var vimeoGAJS = {};
   getLabel : function(iframeEl) {
     var iframeSrc = iframeEl.attr('src').split('?')[0];
     var label = vimeoGAJS.getUrl(iframeSrc);
-    if (iframeEl.attr('title')) {
+    if (iframeEl.data('title')) {
+      label += ' (' + iframeEl.data('title') + ')';
+    } else if (iframeEl.attr('title')) {
       label += ' (' + iframeEl.attr('title') + ')';
     }
     return label;
