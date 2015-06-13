@@ -6,7 +6,8 @@
  */
 
 
-var vimeoGAJS = {
+var vimeoGAJS = {};
+(function($){vimeoGAJS={
   iframes : [],
   gaTracker : undefined,
   eventMarker : {},
@@ -116,6 +117,17 @@ var vimeoGAJS = {
     return iframeSrc;
   },
 
+  getLabel : function(iframeEl) {
+    var iframeSrc = iframeEl.attr('src').split('?')[0];
+    var label = vimeoGAJS.getUrl(iframeSrc);
+    if (iframeEl.data('title')) {
+      label += ' (' + iframeEl.data('title') + ')';
+    } else if (iframeEl.attr('title')) {
+      label += ' (' + iframeEl.attr('title') + ')';
+    }
+    return label;
+  },
+
   // Helper function for sending a message to the player
   post : function (action, value, iframe) {
     var data = {
@@ -182,25 +194,23 @@ var vimeoGAJS = {
 
   // Send event to Classic Analytics, Universal Analytics or Google Tag Manager
   sendEvent: function (iframeEl, action) {
-    var iframeSrc = iframeEl.attr('src').split('?')[0];
     var bounce = iframeEl.data('bounce');
+    var label = vimeoGAJS.getLabel(iframeEl);
 
     switch (vimeoGAJS.gaTracker) {
     case 'gtm':
-      dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': action, 'eventLabel': vimeoGAJS.getUrl(iframeSrc), 'eventValue': undefined, 'eventNonInteraction': (bounce) ? false : true });
+      dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': action, 'eventLabel': label, 'eventValue': undefined, 'eventNonInteraction': (bounce) ? false : true });
       break;
 
     case 'ua':
-      ga('send', 'event', 'Vimeo', action, vimeoGAJS.getUrl(iframeSrc), undefined, {'nonInteraction': (bounce) ? 0 : 1});
+      ga('send', 'event', 'Vimeo', action, label, undefined, {'nonInteraction': (bounce) ? 0 : 1});
       break;
 
     case 'ga':
-      _gaq.push(['_trackEvent', 'Vimeo', action, vimeoGAJS.getUrl(iframeSrc), undefined, (bounce) ? false : true]);
+      _gaq.push(['_trackEvent', 'Vimeo', action, label, undefined, (bounce) ? false : true]);
       break;
     }
   }
 };
-
-$(function() {
-  vimeoGAJS.init();
-});
+vimeoGAJS.init();
+})(jQuery);
