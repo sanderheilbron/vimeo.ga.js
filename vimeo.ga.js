@@ -13,7 +13,7 @@ var vimeoGAJS = {};
   eventMarker : {},
 
   init: function () {
-    vimeoGAJS.iframes = $('iframe');
+    vimeoGAJS.iframes = $('iframe[src*="vimeo.com"]');
 
     $.each(vimeoGAJS.iframes, function (index, iframe) {
       var iframeId = $(iframe).attr('id');
