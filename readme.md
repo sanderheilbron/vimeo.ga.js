@@ -6,18 +6,18 @@ Include the scripts in the body section of the HTML document, just before the `<
 
 ### Basic
 ```html
-<iframe src="//player.vimeo.com/video/22439234?api=1&player_id=vimeo-player-1" id="vimeo-player-1" width="640" height="390" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-<iframe src="//player.vimeo.com/video/22439234?api=1&player_id=vimeo-player-2" id="vimeo-player-2" width="640" height="390" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<iframe src="https://player.vimeo.com/video/22439234?api=1&player_id=vimeo-player-1" id="vimeo-player-1" width="640" height="390" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<iframe src="https:////player.vimeo.com/video/22439234?api=1&player_id=vimeo-player-2" id="vimeo-player-2" width="640" height="390" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 <script src="path/to/vimeo.ga.min.js"></script>
 ```
 ### With some options
 ```html
-<iframe src="//player.vimeo.com/video/22439234?api=1&player_id=vimeo-player-1" id="vimeo-player-1" width="640" height="390" frameborder="0" data-progress="true" data-seek="true" data-bounce="true" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<iframe src="https://player.vimeo.com/video/22439234?api=1&player_id=vimeo-player-1" id="vimeo-player-1" width="640" height="390" frameborder="0" data-progress="true" data-seek="true" data-bounce="true" data-title="The Mountain" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 <script src="path/to/vimeo.ga.min.js"></script>
 ```
-The **data-progress** and **data-seek** attributes enable tracking of progress and skip events. With **data-bounce** set to true event trackers will impact bounce rate of the page which embeds the video.
+The **data-progress** and **data-seek** attributes enable tracking of progress and skip events. With **data-bounce** set to true event trackers will impact bounce rate of the page which embeds the video. Use the **data-title** attribute to add a name of the video to the event label.
 
 The iframe embeds a Vimeo video player and allows Vimeo to serve an HTML5 player rather than a Flash player for mobile devices that do not support Flash.
 
@@ -32,7 +32,7 @@ All player events are only tracked once. Restarting the video will not reset the
   * **Resumed video**: when the video starts playing when it was paused.
   * **Completed video**: when the video reaches 100% completion.
   * **Skipped video**: when the video is skipped forward or backward.
-* Label: URL of embedded video on Vimeo.
+* Label: URL and name (optional) of embedded video on Vimeo.
 
 ##### Example Classic Analytics
 ```js
@@ -68,7 +68,7 @@ dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Skip
   * **25% Progress**: when the video reaches 25% of the total video time.
   * **50% Progress**: when the video reaches 50% of the total video time.
   * **75% Progress**: when the video reaches 75% of the total video time.
-* Label: URL of embedded video on Vimeo.
+* Label: URL and name (optional) of embedded video on Vimeo.
 
 ##### Example Classic Analytics
 ```js
@@ -124,6 +124,12 @@ Have a bug? Please create an [issue](https://github.com/sanderheilbron/vimeo.ga.
 Want to contribute? Great! Just fork the project, make your changes and open a [pull request](https://github.com/sanderheilbron/vimeo.ga.js/pulls).
 
 ## Changelog
+### 0.6 (July 6, 2015)
+* Vimeo video URLs require HTTPS (Vimeo has added the [HSTS response header](https://vimeo.com/forums/api/topic:266518) to their video URLs recently).
+* Possibility to add the name of the video as label.
+* Code cleanup.
+* Updated documentation.
+
 ### 0.5.1 (February 21, 2015)
 * Fix for returning undefined if protocol was present at the source of iframe.
 
