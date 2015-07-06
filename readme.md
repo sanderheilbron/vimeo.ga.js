@@ -36,29 +36,29 @@ All player events are only tracked once. Restarting the video will not reset the
 
 ##### Example Classic Analytics
 ```js
-_gaq.push(['_trackEvent', 'Vimeo', 'Started video', 'http://player.vimeo.com/video/22439234', undefined, true]);
-_gaq.push(['_trackEvent', 'Vimeo', 'Paused video', 'http://player.vimeo.com/video/22439234', undefined, true]);
-_gaq.push(['_trackEvent', 'Vimeo', 'Resumed video', 'http://player.vimeo.com/video/22439234', undefined, true]);
-_gaq.push(['_trackEvent', 'Vimeo', 'Completed video', 'http://player.vimeo.com/video/22439234', undefined, true]);
-_gaq.push(['_trackEvent', 'Vimeo', 'Skipped video forward or backward', 'http://player.vimeo.com/video/22439234', undefined, true]);
+_gaq.push(['_trackEvent', 'Vimeo', 'Started video', 'https://player.vimeo.com/video/22439234', undefined, true]);
+_gaq.push(['_trackEvent', 'Vimeo', 'Paused video', 'https://player.vimeo.com/video/22439234', undefined, true]);
+_gaq.push(['_trackEvent', 'Vimeo', 'Resumed video', 'https://player.vimeo.com/video/22439234', undefined, true]);
+_gaq.push(['_trackEvent', 'Vimeo', 'Completed video', 'httpss://player.vimeo.com/video/22439234', undefined, true]);
+_gaq.push(['_trackEvent', 'Vimeo', 'Skipped video forward or backward', 'https://player.vimeo.com/video/22439234', undefined, true]);
 ```
 
 ##### Example Universal Analytics
 ```js
-ga('send', 'event', 'Vimeo', 'Started video', 'http://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
-ga('send', 'event', 'Vimeo', 'Paused video', 'http://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
-ga('send', 'event', 'Vimeo', 'Resumed video', 'http://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
-ga('send', 'event', 'Vimeo', 'Completed video', 'http://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
-ga('send', 'event', 'Vimeo', 'Skipped video forward or backward', 'http://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
+ga('send', 'event', 'Vimeo', 'Started video', 'https://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
+ga('send', 'event', 'Vimeo', 'Paused video', 'https://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
+ga('send', 'event', 'Vimeo', 'Resumed video', 'https://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
+ga('send', 'event', 'Vimeo', 'Completed video', 'https://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
+ga('send', 'event', 'Vimeo', 'Skipped video forward or backward', 'https://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
 ```
 
 ##### Example Google Tag Manager
 ```js
-dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Started video', 'eventLabel': 'http://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
-dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Paused video', 'eventLabel': 'http://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
-dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Resumed video', 'eventLabel': 'http://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
-dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Completed video', 'eventLabel': 'http://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
-dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Skipped video forward or backward', 'eventLabel': 'http://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
+dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Started video', 'eventLabel': 'https://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
+dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Paused video', 'eventLabel': 'https://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
+dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Resumed video', 'eventLabel': 'https://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
+dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Completed video', 'eventLabel': 'https://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
+dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Skipped video forward or backward', 'eventLabel': 'https://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
 ```
 
 ### Progress event trackers
@@ -72,23 +72,23 @@ dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Skip
 
 ##### Example Classic Analytics
 ```js
-_gaq.push(['_trackEvent', 'Vimeo', 'Played video: 25%', 'http://player.vimeo.com/video/22439234', undefined, true]);
-_gaq.push(['_trackEvent', 'Vimeo', 'Played video: 50%', 'http://player.vimeo.com/video/22439234', undefined, true]);
-_gaq.push(['_trackEvent', 'Vimeo', 'Played video: 75%', 'http://player.vimeo.com/video/22439234', undefined, true]);
+_gaq.push(['_trackEvent', 'Vimeo', 'Played video: 25%', 'https://player.vimeo.com/video/22439234', undefined, true]);
+_gaq.push(['_trackEvent', 'Vimeo', 'Played video: 50%', 'https://player.vimeo.com/video/22439234', undefined, true]);
+_gaq.push(['_trackEvent', 'Vimeo', 'Played video: 75%', 'https://player.vimeo.com/video/22439234', undefined, true]);
 ```
 
 ##### Example Universal Analytics
 ```js
-ga('send', 'event', 'Vimeo', 'Played video: 25%', 'http://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
-ga('send', 'event', 'Vimeo', 'Played video: 50%', 'http://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
-ga('send', 'event', 'Vimeo', 'Played video: 75%', 'http://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
+ga('send', 'event', 'Vimeo', 'Played video: 25%', 'https://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
+ga('send', 'event', 'Vimeo', 'Played video: 50%', 'https://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
+ga('send', 'event', 'Vimeo', 'Played video: 75%', 'https://player.vimeo.com/video/22439234', undefined, {'nonInteraction': 1});
 ```
 
 ##### Example Google Tag Manager
 ```js
-dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Played video: 25%', 'eventLabel': 'http://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
-dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Played video: 50%', 'eventLabel': 'http://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
-dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Played video: 75%', 'eventLabel': 'http://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
+dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Played video: 25%', 'eventLabel': 'https://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
+dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Played video: 50%', 'eventLabel': 'https://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
+dataLayer.push({'event': 'Vimeo', 'eventCategory': 'Vimeo', 'eventAction': 'Played video: 75%', 'eventLabel': 'https://player.vimeo.com/video/22439234', 'eventValue': undefined, 'eventNonInteraction': true});
 ```
 
 ### Bounce rate
@@ -108,6 +108,10 @@ If you'd like to integrate with Google Tag Manager, the dataLayer variable names
 Use the GTM event `Vimeo` to fire the Universal or Classic Google Analytics event tag.
 
 The GTM container tag could also be used to include the plugin inside a page containing the video. Create a custom HTML tag and trigger this tag so that this script fires on gtm.dom (`{{event}}` equals `gtm.dom`), meaning it will fire once the DOM is ready.
+
+Recent tutorials on using vimeo.ga.js together with Google Tag Manager and Google Analytics:
+* http://blog.vickeryhill.com/2015/04/track-vimeo-click-events-for-google.html
+* http://www.serpstone.com/magazine/vimeo-video-tracking-in-google-analytics-using-tag-manager/
 
 ## Browser Support
 Tested in the latest versions of Chrome, Firefox, Safari, and IE. Also tested on iOS.
