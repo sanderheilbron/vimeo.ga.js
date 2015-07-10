@@ -39,7 +39,7 @@ All player events are only tracked once. Restarting the video will not reset the
 _gaq.push(['_trackEvent', 'Vimeo', 'Started video', 'https://player.vimeo.com/video/22439234', undefined, true]);
 _gaq.push(['_trackEvent', 'Vimeo', 'Paused video', 'https://player.vimeo.com/video/22439234', undefined, true]);
 _gaq.push(['_trackEvent', 'Vimeo', 'Resumed video', 'https://player.vimeo.com/video/22439234', undefined, true]);
-_gaq.push(['_trackEvent', 'Vimeo', 'Completed video', 'httpss://player.vimeo.com/video/22439234', undefined, true]);
+_gaq.push(['_trackEvent', 'Vimeo', 'Completed video', 'https://player.vimeo.com/video/22439234', undefined, true]);
 _gaq.push(['_trackEvent', 'Vimeo', 'Skipped video forward or backward', 'https://player.vimeo.com/video/22439234', undefined, true]);
 ```
 
