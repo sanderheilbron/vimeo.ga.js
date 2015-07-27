@@ -70,7 +70,7 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
 
       switch (data.event) {
       case 'ready':
-        vimeoGAJS.onReady();
+        vimeoGAJS.onReady(iframeEl);
         break;
 
       case 'playProgress':
@@ -134,14 +134,13 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
       iframe.contentWindow.postMessage(JSON.stringify(data), iframeSrc);
     },
 
-    onReady :function() {
-      $.each(vimeoGAJS.iframes, function(index, iframe) {
+    onReady :function(iframeEl) {
+        iframe = iframeEl[0];
         vimeoGAJS.post('addEventListener', 'play', iframe);
         vimeoGAJS.post('addEventListener', 'seek', iframe);
         vimeoGAJS.post('addEventListener', 'pause', iframe);
         vimeoGAJS.post('addEventListener', 'finish', iframe);
         vimeoGAJS.post('addEventListener', 'playProgress', iframe);
-      });
     },
 
     onPause: function(iframeEl) {
