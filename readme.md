@@ -109,9 +109,11 @@ Use the GTM event `Vimeo` to fire the Universal or Classic Google Analytics even
 
 The GTM container tag could also be used to include the plugin inside a page containing the video. Create a custom HTML tag and trigger this tag so that this script fires on gtm.dom (`{{event}}` equals `gtm.dom`), meaning it will fire once the DOM is ready.
 
-Recent tutorials on using vimeo.ga.js together with Google Tag Manager and Google Analytics:
-* http://blog.vickeryhill.com/2015/04/track-vimeo-click-events-for-google.html
-* http://www.serpstone.com/magazine/vimeo-video-tracking-in-google-analytics-using-tag-manager/
+
+## Tutorials:
+* [Track Vimeo Click Events for Google Universal Analytics in Tag Manager Using vimeo.ga.js](https://vickeryhill.com/blog/track-vimeo-click-events-for-google-universal-analytics-in-tag-manager-using-vimeo-ga-js/)
+* [Vimeo video tracking in Google Analytics using Tag Manager](http://www.serpstone.com/magazine/vimeo-video-tracking-in-google-analytics-using-tag-manager/)
+* [Track Vimeo Video Engagement In Google Analytics Using Sander Heilbron Script | WP Learning Lab](https://www.youtube.com/watch?v=fCVoMW8Q_cg)
 
 ## Browser Support
 Tested in the latest versions of Chrome, Firefox, Safari, and IE. Also tested on iOS.
