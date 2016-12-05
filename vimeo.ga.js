@@ -15,7 +15,7 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
     eventMarker : {},
 
     init: function () {
-      vimeoGAJS.iframes = [].slice.call(document.querySelectorAll('iframe'));
+      vimeoGAJS.iframes = [].slice.call(document.querySelectorAll('#vimeo-player'));
 
       vimeoGAJS.iframes.forEach(function (iframe, index) {
         var iframeId = iframe.id;
