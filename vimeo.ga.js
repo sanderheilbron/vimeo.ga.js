@@ -15,7 +15,7 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
     eventMarker : {},
 
     init: function () {
-      vimeoGAJS.iframes = $('iframe');
+      vimeoGAJS.iframes = $('iframe.vimeo-video');
 
       $.each(vimeoGAJS.iframes, function (index, iframe) {
         var iframeId = $(iframe).attr('id');
