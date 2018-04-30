@@ -1,3 +1,5 @@
+**This repository is not maintained anymore!**
+
 # Google Analytics Vimeo Video Tracking
 A Google Analytics plugin for measuring Vimeo Player Events. The plugin supports Universal Analytics, Classic Google Analytics, and Google Tag Manager.
 
