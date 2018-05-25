@@ -8,17 +8,17 @@
 
 var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
 
-(function($) {
+(function() {
   vimeoGAJS = {
     iframes : [],
     gaTracker : undefined,
     eventMarker : {},
 
     init: function () {
-      vimeoGAJS.iframes = $('iframe');
+      vimeoGAJS.iframes = [].slice.call(document.querySelectorAll('#vimeo-player'));
 
-      $.each(vimeoGAJS.iframes, function (index, iframe) {
-        var iframeId = $(iframe).attr('id');
+      vimeoGAJS.iframes.forEach(function (iframe, index) {
+        var iframeId = iframe.id;
 
         vimeoGAJS.eventMarker[iframeId] = {
           'progress25' : false,
@@ -65,8 +65,8 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
       }
 
       var data = JSON.parse(e.data),
-          iframeEl = $("#"+data.player_id),
-          iframeId = iframeEl.attr('id');
+          iframeEl = document.querySelector("#"+data.player_id),
+          iframeId = iframeEl.id;
 
       switch (data.event) {
       case 'ready':
@@ -78,7 +78,7 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
         break;
 
       case 'seek':
-        if (iframeEl.data('seek') && !vimeoGAJS.eventMarker[iframeId].videoSeeking) {
+        if (iframeEl.getAttribute('data-seek') && !vimeoGAJS.eventMarker[iframeId].videoSeeking) {
           vimeoGAJS.sendEvent(iframeEl, 'Skipped video forward or backward');
           vimeoGAJS.eventMarker[iframeId].videoSeeking = true; // Avoid subsequent seek trackings
         }
@@ -108,12 +108,12 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
     },
 
     getLabel : function(iframeEl) {
-      var iframeSrc = iframeEl.attr('src').split('?')[0];
+      var iframeSrc = iframeEl.src.split('?')[0];
       var label = iframeSrc;
-      if (iframeEl.data('title')) {
-        label += ' (' + iframeEl.data('title') + ')';
-      } else if (iframeEl.attr('title')) {
-        label += ' (' + iframeEl.attr('title') + ')';
+      if (iframeEl.getAttribute('data-title')) {
+        label += ' (' + iframeEl.getAttribute('data-title') + ')';
+      } else if (iframeEl.getAttribute('title')) {
+        label += ' (' + iframeEl.getAttribute('data-title') + ')';
       }
       return label;
     },
@@ -129,13 +129,13 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
       }
 
       // Source URL
-      var iframeSrc = $(iframe).attr('src').split('?')[0];
+      var iframeSrc = iframe.src.split('?')[0];
 
       iframe.contentWindow.postMessage(JSON.stringify(data), iframeSrc);
     },
 
     onReady :function() {
-      $.each(vimeoGAJS.iframes, function(index, iframe) {
+      vimeoGAJS.iframes.forEach(function(iframe, index) {
         vimeoGAJS.post('addEventListener', 'play', iframe);
         vimeoGAJS.post('addEventListener', 'seek', iframe);
         vimeoGAJS.post('addEventListener', 'pause', iframe);
@@ -145,7 +145,7 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
     },
 
     onPause: function(iframeEl) {
-      var iframeId = iframeEl.attr('id');
+      var iframeId = iframeEl.id;
       if (vimeoGAJS.eventMarker[iframeId].timePercentComplete < 99 && !vimeoGAJS.eventMarker[iframeId].videoPaused) {
         vimeoGAJS.sendEvent(iframeEl, 'Paused video');
         vimeoGAJS.eventMarker[iframeId].videoPaused = true; // Avoid subsequent pause trackings
@@ -155,10 +155,10 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
     // Tracking video progress
     onPlayProgress: function(data, iframeEl) {
       var progress,
-          iframeId = iframeEl.attr('id');
+          iframeId = iframeEl.id;
       vimeoGAJS.eventMarker[iframeId].timePercentComplete = Math.round((data.percent) * 100); // Round to a whole number
 
-      if (!iframeEl.data('progress')) {
+      if (!iframeEl.getAttribute('data-progress')) {
         return;
       }
 
@@ -184,7 +184,7 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
 
     // Send event to Classic Analytics, Universal Analytics or Google Tag Manager
     sendEvent: function (iframeEl, action) {
-      var bounce = iframeEl.data('bounce');
+      var bounce = iframeEl.getAttribute('data-bounce');
       var label = vimeoGAJS.getLabel(iframeEl);
 
       switch (vimeoGAJS.gaTracker) {
@@ -204,4 +204,4 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
   };
 
   vimeoGAJS.init();
-})(jQuery);
+})();
