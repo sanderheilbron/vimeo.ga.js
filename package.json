@@ -1,0 +1,21 @@
+{
+  "name": "vimeo.ga.js",
+  "version": "0.6",
+  "description": "Tracking Vimeo Player Events with Google Analytics",
+  "main": "vimeo.ga.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanderheilbron/vimeo.ga.js.git"
+  },
+  "keywords": [
+    "Vimeo",
+    "Google",
+    "Analytics"
+  ],
+  "author": "Sander Heilbron",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sanderheilbron/vimeo.ga.js/issues"
+  },
+  "homepage": "https://github.com/sanderheilbron/vimeo.ga.js#readme"
+}
