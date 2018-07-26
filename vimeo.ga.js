@@ -131,6 +131,10 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
       // Source URL
       var iframeSrc = $(iframe).attr('src').split('?')[0];
 
+      if(!iframe.contentWindow){
+      return
+      }
+      
       iframe.contentWindow.postMessage(JSON.stringify(data), iframeSrc);
     },
 
