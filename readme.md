@@ -19,7 +19,7 @@ Include the scripts in the body section of the HTML document, just before the `<
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 <script src="path/to/vimeo.ga.min.js"></script>
 ```
-The **data-progress** and **data-seek** attributes enable tracking of progress and skip events. With **data-bounce** set to true event trackers will impact bounce rate of the page which embeds the video. Use the **data-title** attribute to add a name of the video to the event label.
+The **data-progress** and **data-seek** attributes enable tracking of progress and skip events. With **data-bounce** set to true event trackers will impact bounce rate of the page which embeds the video. Use the **data-title** or **title** attribute to add a name of the video to the event label.
 
 The iframe embeds a Vimeo video player and allows Vimeo to serve an HTML5 player rather than a Flash player for mobile devices that do not support Flash.
 
