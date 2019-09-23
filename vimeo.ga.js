@@ -15,7 +15,7 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
     eventMarker : {},
 
     init: function () {
-      vimeoGAJS.iframes = $('iframe');
+      vimeoGAJS.iframes = $('iframe[src*="player.vimeo.com"]');
 
       $.each(vimeoGAJS.iframes, function (index, iframe) {
         var iframeId = $(iframe).attr('id');
@@ -36,17 +36,14 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
       // Check which version of Google Analytics is used
       if (typeof ga === "function") {
         vimeoGAJS.gaTracker = 'ua'; // Universal Analytics (universal.js)
-        //console.info('Universal Analytics');
       }
 
       if (typeof _gaq !== "undefined" && typeof _gaq.push === "function") {
         vimeoGAJS.gaTracker = 'ga'; // Classic Analytics (ga.js)
-        //console.info('Classic Analytics');
       }
 
       if (typeof dataLayer !== "undefined" && typeof dataLayer.push === "function") {
         vimeoGAJS.gaTracker = 'gtm'; // Google Tag Manager (dataLayer)
-        //console.info('Google Tag Manager');
       }
 
       // Listen for messages from the player
@@ -60,7 +57,7 @@ var vimeoGAJS = (window.vimeoGAJS) ? window.vimeoGAJS : {};
     // Handle messages received from the player
     onMessageReceived: function(e) {
       if (e.origin.replace('https:', 'http:') !== "http://player.vimeo.com" || typeof vimeoGAJS.gaTracker === 'undefined') {
-        //console.warn('Tracker is missing!');
+        console.warn('Tracker is missing!');
         return;
       }
 
